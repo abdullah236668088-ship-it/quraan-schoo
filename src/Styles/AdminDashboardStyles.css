@@ -1,0 +1,281 @@
+/* =================================================================
+   Admin Dashboard Styles - أنماط لوحة تحكم المدير
+   =================================================================
+   هذا الملف ينسق صفحة لوحة التحكم الرئيسية، بما في ذلك
+   بطاقات الإحصائيات، الرسوم البيانية، والروابط السريعة.
+   ================================================================= */
+
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+/* 1. الحاوية الرئيسية للصفحة
+   ================================================================= */
+.admin-dashboard-container {
+    /* يرث من .page-container ولكن مع عرض أكبر ليناسب المحتوى */
+    max-width: 1200px;
+    /* عرض أقصى أكبر للوحة التحكم */
+    margin: calc(var(--spacing-unit) * 5) auto;
+    /* 40px - توسيط الحاوية */
+    padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 6);
+    /* 32px 48px - حشو سخي */
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+    transition: box-shadow var(--transition-base);
+    /* انتقال ناعم للظل */
+}
+
+.admin-dashboard-container:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.admin-dashboard-title {
+    /* استخدام نفس نمط h1 للصفحة الرئيسية */
+    font-size: var(--font-size-h1);
+    /* حجم خط كبير ومميز */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    text-align: center;
+    /* توسيط العنوان */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+    font-weight: 700;
+}
+
+/* 2. شبكة بطاقات الإحصائيات
+   ================================================================= */
+.stats-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* شبكة مرنة لبطاقات الإحصائيات */
+    gap: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    margin-bottom: calc(var(--spacing-unit) * 5);
+    /* 40px */
+}
+
+.stat-card {
+    background-color: var(--background-light);
+    /* خلفية فاتحة للبطاقة */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    text-align: center;
+    transition: box-shadow var(--transition-base);
+}
+
+.stat-card:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.stat-card h4 {
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-size: 1.1em;
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-arabic);
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 2.2em;
+    /* حجم خط كبير للأرقام */
+    font-weight: bold;
+    color: var(--secondary-color);
+    /* لون مميز للأرقام */
+}
+
+/* 3. قسم الرسوم البيانية
+   ================================================================= */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* شبكة مرنة للرسوم البيانية */
+    gap: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    margin-bottom: calc(var(--spacing-unit) * 5);
+    /* 40px */
+}
+
+.chart-card {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    transition: box-shadow var(--transition-base);
+}
+
+.chart-card:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.chart-card h3 {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 0.75);
+    /* 6px */
+    text-align: center;
+    font-family: var(--font-family-arabic);
+}
+
+.chart-container {
+    width: 100%;
+    height: 350px;
+    /* ارتفاع ثابت للرسم البياني */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 4. قسم الروابط السريعة
+   ================================================================= */
+.quick-links-section {
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    transition: box-shadow var(--transition-base);
+}
+
+.quick-links-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.quick-links-title {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+.quick-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* شبكة مرنة للروابط */
+    gap: calc(var(--spacing-unit) * 2);
+    /* 16px */
+}
+
+.quick-link-item {
+    display: block;
+    background-color: var(--color-background-subtle);
+    /* لون خلفية ثانوي للروابط */
+    color: var(--secondary-color);
+    /* لون نص مميز */
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color var(--transition-base), color var(--transition-base), transform var(--transition-base);
+    border: 1px solid var(--color-border);
+    font-family: var(--font-family-arabic);
+}
+
+.quick-link-item:hover {
+    background-color: var(--secondary-color);
+    /* تغيير اللون عند التحويم */
+    color: var(--color-background-content);
+    /* نص فاتح عند التحويم */
+    transform: translateY(-2px);
+    /* رفع بسيط */
+    border-color: var(--secondary-color);
+}
+
+.button-as-link {
+    /* نمط لزر يبدو كرابط */
+    width: 100%;
+    /* تأخذ عرضًا كاملاً */
+    cursor: pointer;
+    /* ترث معظم الأنماط من .quick-link-item */
+}
+
+/* 5. الرسائل العامة (خطأ، تحميل، لا توجد بيانات، غير مصرح)
+   ================================================================= */
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+    }
+
+    .admin-dashboard-title {
+        font-size: 2em;
+        /* تقليل حجم العنوان */
+    }
+
+    .stats-summary-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد لبطاقات الإحصائيات */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .stat-card p {
+        font-size: 1.8em;
+        /* تقليل حجم أرقام الإحصائيات */
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد للرسوم البيانية */
+        gap: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .chart-container {
+        height: 280px;
+        /* تقليل ارتفاع الرسم البياني */
+    }
+
+    .quick-links-section {
+        padding: calc(var(--spacing-unit) * 3);
+        /* 24px */
+    }
+
+    .quick-links-list {
+        grid-template-columns: 1fr;
+        /* عمود واحد للروابط السريعة */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+}

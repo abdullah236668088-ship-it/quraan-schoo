@@ -1,0 +1,360 @@
+/* src/styles/ActivitiesManagementStyles.css */
+
+/* استيراد التنسيقات العامة */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+.activities-management-container {
+    max-width: 900px;
+    /* عرض أقصى للحاوية */
+    margin: calc(var(--spacing-unit) * 4) auto;
+    /* 30px - توسيط الحاوية */
+    padding: var(--padding-medium);
+    /* استخدام متغير الحشو المتوسط */
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+}
+
+.activities-management-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px - مسافة سفلية */
+    font-size: 2.2em;
+    /* حجم خط كبير ومميز */
+    font-weight: 700;
+    /* خط سميك */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* قسم قائمة الأنشطة ونموذج النشاط */
+.activities-list-section,
+.activity-form-section {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px - مسافة سفلية بين الأقسام */
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px - حشو مناسب */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية */
+    background-color: var(--background-light);
+    /* خلفية فاتحة للأقسام */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    transition: box-shadow var(--transition-base);
+    /* انتقال ناعم للظل */
+}
+
+.activities-list-section:hover,
+.activity-form-section:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.activities-list-section h3,
+.activity-form-section h3 {
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    font-size: 1.3em;
+    /* حجم خط مناسب */
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    /* خط سفلي رفيع */
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+/* قائمة الأنشطة */
+.activities-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.activity-item {
+    display: flex;
+    flex-direction: column;
+    /* ترتيب العناصر عموديًا */
+    gap: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    border-bottom: 1px solid var(--input-border);
+    /* خط فاصل بين العناصر */
+    transition: background-color var(--transition-base);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+    /* إزالة الخط الفاصل لآخر عنصر */
+}
+
+.activity-item:hover {
+    background-color: var(--background-light);
+    /* خلفية خفيفة عند التحويم */
+}
+
+.activity-details {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.activity-details h4 {
+    margin: 0;
+    font-size: 1.2em;
+    color: var(--primary-color);
+    font-family: var(--font-family-arabic);
+}
+
+.activity-details p {
+    margin: calc(var(--spacing-unit) * 0.5) 0;
+    /* 4px */
+    font-size: 0.95em;
+    color: var(--text-color-dark);
+}
+
+.activity-meta {
+    display: flex;
+    flex-wrap: wrap;
+    /* للسماح بالعناصر بالانتقال لسطر جديد */
+    gap: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+}
+
+.activity-meta span {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 0.5);
+    /* 4px */
+}
+
+.activity-meta svg {
+    color: var(--secondary-color);
+    /* لون الأيقونات */
+    width: 16px;
+    height: 16px;
+}
+
+.activity-description {
+    font-size: 1em;
+    line-height: var(--line-height-base);
+    color: var(--text-color-dark);
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+}
+
+.activity-image {
+    max-width: 100%;
+    height: 200px;
+    /* ارتفاع ثابت للصور */
+    object-fit: cover;
+    border-radius: var(--border-radius-base);
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    box-shadow: var(--shadow-light);
+}
+
+.activity-actions {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    justify-content: flex-end;
+    /* محاذاة الأزرار لليمين */
+}
+
+/* نموذج إضافة/تعديل النشاط */
+.activity-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* عمود واحد افتراضيًا */
+    gap: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+}
+
+.activity-form .form-group {
+    margin-bottom: 0;
+    /* إزالة المسافة السفلية الافتراضية لمجموعات الحقول */
+}
+
+.activity-form .form-group label {
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي للتسميات */
+}
+
+
+
+.activity-form .submit-button,
+.activity-form .cancel-button {
+    /* ترث الأنماط الأساسية من CommonStyles.css .btn */
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: var(--border-radius-base);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.activity-form .submit-button {
+    background-color: var(--primary-color);
+    /* أخضر للإضافة/التحديث */
+    color: var(--text-color-light);
+}
+
+.activity-form .cancel-button {
+    background-color: var(--color-text-secondary);
+    /* رمادي للإلغاء */
+    color: var(--text-color-light);
+}
+
+.activity-form .submit-button:hover {
+    background-color: var(--secondary-color);
+    /* تغيير اللون عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.activity-form .cancel-button:hover {
+    background-color: darken(var(--color-text-secondary), 10%);
+    /* لون أغمق عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.activity-form .submit-button:disabled,
+.activity-form .cancel-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* الرسائل (الخطأ، النجاح، لا توجد بيانات) */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق إدارة الأنشطة. */
+.error-message,
+.success-message,
+.no-data-message,
+.loading-message {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 15px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.no-data-message {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background-color: var(--background-light);
+    border: 1px solid var(--input-border);
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .activities-management-container {
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .activities-management-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .activity-item {
+        padding: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .activity-details h4 {
+        font-size: 1.1em;
+    }
+
+    .activity-meta {
+        flex-direction: column;
+        /* ترتيب العناصر في عمود */
+        gap: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+
+    .activity-actions {
+        flex-direction: column;
+        /* ترتيب الأزرار في عمود */
+        gap: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+
+    .activity-form .submit-button,
+    .activity-form .cancel-button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        font-size: 1em;
+    }
+}
+
+/* التنسيق الخاص بالصور في حال عدم وجود صورة */
+.activity-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    /* خلفية رمادية فاتحة */
+    border-radius: var(--border-radius-base);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    box-shadow: var(--shadow-light);
+}
+
+.activity-image-placeholder .placeholder-text {
+    font-size: 1.1em;
+}

@@ -1,0 +1,389 @@
+@import url('./GlobalStyles.css');
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./CommonStyles.css');
+/* استيراد الأنماط المشتركة */
+
+.reports-page-container {
+    max-width: 1100px;
+    /* عرض أقصى للحاوية، مناسب للجداول والرسوم البيانية */
+    margin: calc(var(--spacing-unit) * 5) auto;
+    /* 40px - توسيط الحاوية */
+    padding: calc(var(--spacing-unit) * 4.5) calc(var(--spacing-unit) * 3);
+    /* 36px 24px - حشو مناسب */
+    background: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+    /* انتقال ناعم للخلفية والظل */
+}
+
+.reports-page-container:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح قليلاً عند التحويم */
+}
+
+.reports-page-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px - مسافة سفلية */
+    font-size: 2.3em;
+    /* حجم خط كبير ومميز */
+    font-weight: 800;
+    /* خط سميك جداً */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    letter-spacing: 0.5px;
+    /* تباعد الأحرف */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* قسم فلاتر التقرير */
+.report-filters-section {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+    /* 24px 16px */
+    border-radius: var(--border-radius-base);
+    background: var(--background-light);
+    /* خلفية فاتحة للقسم */
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.report-filters-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.report-filters-section h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* شبكة مرنة لحقول الفلترة */
+    gap: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    align-items: flex-end;
+    /* محاذاة العناصر للأسفل */
+}
+
+.form-group {
+    margin-bottom: 0;
+    /* إزالة المسافة السفلية الافتراضية لمجموعات الحقول */
+}
+
+.form-group label {
+    font-family: var(--font-family-arabic);
+}
+
+.form-group input,
+.form-group select {
+    margin-bottom: 0;
+}
+
+.view-reports-button {
+    background-color: var(--primary-color);
+    /* أخضر لزر عرض التقارير */
+    color: var(--text-color-light);
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: var(--border-radius-base);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+    grid-column: 1 / -1;
+    /* لجعل الزر يأخذ عرض الشبكة بالكامل */
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    width: fit-content;
+    /* لجعل الزر يتناسب مع عرضه */
+    justify-self: start;
+    /* محاذاة الزر لليمين في الشبكة */
+}
+
+.view-reports-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.view-reports-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* قسم الرسوم البيانية */
+.charts-section {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+    /* 24px 16px */
+    border-radius: var(--border-radius-base);
+    background: var(--background-light);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.charts-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.charts-section h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 400px;
+    /* ارتفاع ثابت للرسم البياني */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--surface-light);
+    /* خلفية بيضاء للرسم البياني */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+}
+
+.chart-wrapper canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* قسم الجدول التفصيلي للتقارير */
+.detailed-reports-section {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+    /* 24px 16px */
+    border-radius: var(--border-radius-base);
+    background: var(--background-light);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.detailed-reports-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.detailed-reports-section h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+.reports-table-container {
+    overflow-x: auto;
+    /* لجعل الجدول قابلاً للتمرير أفقيًا على الشاشات الصغيرة */
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+}
+
+.reports-table {
+    width: 100%;
+    min-width: 900px;
+    /* عرض أدنى للجدول لمنع التكدس */
+    border-collapse: collapse;
+    background-color: var(--surface-light);
+    border-radius: var(--border-radius-base);
+    overflow: hidden;
+}
+
+.reports-table th,
+.reports-table td {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    text-align: right;
+    border-bottom: 1px solid var(--input-border);
+    font-family: var(--font-family-arabic);
+}
+
+.reports-table th {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.reports-table tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.reports-table tbody tr:hover {
+    background-color: var(--background-light);
+}
+
+/* زر تصدير PDF */
+.export-pdf-button {
+    background-color: var(--accent-color);
+    /* فيروزي للتصدير */
+    color: var(--text-color-light);
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: var(--border-radius-base);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    width: fit-content;
+    justify-self: start;
+}
+
+.export-pdf-button:hover {
+    background-color: darken(var(--accent-color), 10%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.export-pdf-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* الرسائل العامة */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق التقارير. */
+.error-message,
+.success-message,
+.loading-message,
+.no-data-message,
+.info-message,
+.unauthorized-message {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 15px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.no-data-message {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background-color: var(--background-light);
+    border: 1px solid var(--input-border);
+}
+
+.info-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.unauthorized-message {
+    background-color: #FBE9E7;
+    color: #BF360C;
+    border: 1px solid #FFAB91;
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .reports-page-container {
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .reports-page-title {
+        font-size: 2em;
+        /* تقليل حجم العنوان */
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 15px */
+    }
+
+    .view-reports-button,
+    .export-pdf-button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        justify-self: stretch;
+        /* تمديد الزر لملء العرض */
+    }
+
+    .chart-wrapper {
+        height: 300px;
+        /* تقليل ارتفاع الرسم البياني */
+    }
+
+    .reports-table th,
+    .reports-table td {
+        padding: calc(var(--spacing-unit) * 1);
+        /* 8px */
+        font-size: 0.85em;
+        /* تقليل حجم الخط */
+    }
+}

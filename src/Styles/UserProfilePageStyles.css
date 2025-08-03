@@ -1,0 +1,279 @@
+/* src/styles/UserProfilePageStyles.css */
+
+/* استيراد التنسيقات العامة */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+.user-profile-container {
+    max-width: 800px;
+    /* عرض أقصى للحاوية، مناسب لصفحات الملف الشخصي */
+    margin: calc(var(--spacing-unit) * 4) auto;
+    /* 30px - توسيط الحاوية */
+    padding: var(--padding-medium);
+    /* استخدام متغير الحشو المتوسط */
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+}
+
+.profile-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px - مسافة سفلية */
+    font-size: 2.2em;
+    /* حجم خط كبير ومميز */
+    font-weight: 700;
+    /* خط سميك */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* قسم تفاصيل الملف الشخصي والإجراءات */
+.profile-details,
+.profile-actions {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px - مسافة سفلية بين الأقسام */
+    padding: var(--padding-medium);
+    /* حشو مناسب */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية */
+    background-color: var(--background-light);
+    /* خلفية فاتحة للأقسام */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    transition: box-shadow var(--transition-base);
+    /* انتقال ناعم للظل */
+}
+
+.profile-details:hover,
+.profile-actions:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    /* توزيع العناصر بالتساوي */
+    align-items: center;
+    /* محاذاة عمودية */
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+    /* 12px - حشو عمودي */
+    border-bottom: 1px solid var(--input-border);
+    /* خط فاصل بين العناصر */
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    font-family: var(--font-family-arabic);
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+    /* إزالة الخط الفاصل لآخر عنصر */
+}
+
+.detail-item strong {
+    color: var(--primary-color);
+    /* لون مميز للعناوين الفرعية */
+    font-weight: 600;
+    min-width: 120px;
+    /* عرض أدنى لضمان محاذاة جيدة */
+}
+
+.detail-item span {
+    flex-grow: 1;
+    text-align: left;
+    /* محاذاة القيمة لليسار */
+    padding-right: calc(var(--spacing-unit) * 2);
+    /* مسافة بين القيمة وزر التعديل */
+}
+
+.detail-item .edit-name-input {
+    flex-grow: 1;
+    margin-bottom: 0;
+    /* إزالة الهامش السفلي الافتراضي */
+    font-family: var(--font-family-arabic);
+}
+
+.detail-item .edit-name-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+    padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+    /* 6px 12px */
+    font-size: 0.85em;
+    border-radius: var(--border-radius-base);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.detail-item .edit-name-button:hover {
+    background-color: darken(var(--secondary-color), 10%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+.detail-item .edit-name-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* قسم الإجراءات */
+.profile-actions {
+    display: flex;
+    justify-content: flex-start;
+    /* محاذاة الأزرار لليمين */
+    gap: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-top: calc(var(--spacing-unit) * 5);
+    /* 40px - مسافة علوية أكبر */
+}
+
+.reset-password-button {
+    background-color: var(--accent-color);
+    /* لون مميز لزر إعادة تعيين كلمة المرور */
+    color: var(--text-color-light);
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: var(--border-radius-base);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.reset-password-button:hover {
+    background-color: darken(var(--accent-color), 10%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.reset-password-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* الرسائل (خطأ، نجاح، معلومات) */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق الملف الشخصي. */
+.loading-message,
+.error-message,
+.success-message,
+.info-message {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 15px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+.info-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .user-profile-container {
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .profile-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .detail-item {
+        flex-direction: column;
+        /* ترتيب العناصر في عمود */
+        align-items: flex-start;
+        /* محاذاة لليسار */
+        gap: calc(var(--spacing-unit) * 0.5);
+        /* 5px */
+        font-size: 1em;
+    }
+
+    .detail-item strong {
+        min-width: auto;
+        /* إزالة العرض الأدنى */
+        width: 100%;
+        /* لجعل العنوان يأخذ عرضًا كاملاً */
+        margin-bottom: calc(var(--spacing-unit) * 0.5);
+        /* 5px */
+    }
+
+    .detail-item span {
+        text-align: right;
+        /* محاذاة القيمة لليمين */
+        padding-right: 0;
+        width: 100%;
+        /* تأخذ عرضًا كاملاً */
+    }
+
+    .detail-item .edit-name-input {
+        width: 100%;
+    }
+
+    .detail-item .edit-name-button {
+        width: 100%;
+        /* الزر يأخذ عرضًا كاملاً */
+        margin-top: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+
+    .profile-actions {
+        flex-direction: column;
+        /* الأزرار في عمود واحد */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .reset-password-button {
+        width: 100%;
+        /* الزر يأخذ عرضًا كاملاً */
+        font-size: 0.95em;
+    }
+}

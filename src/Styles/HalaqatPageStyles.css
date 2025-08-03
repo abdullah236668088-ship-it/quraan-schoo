@@ -1,0 +1,355 @@
+/* =================================================================
+   Halaqat Page Styles - أنماط صفحة إدارة الحلقات
+   =================================================================
+   هذا الملف ينسق صفحة إدارة الحلقات، بما في ذلك قائمة الحلقات،
+   نماذج الإضافة والتعديل، مع الالتزام بالهوية البصرية للتطبيق.
+   ================================================================= */
+
+/* 1. استيراد الأنماط العامة والمتغيرات */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+/* 2. الحاوية الرئيسية والعنوان
+   ================================================================= */
+.halaqat-page-container {
+    max-width: 900px;
+    /* عرض أقصى للحاوية، متناسق مع صفحات الإدارة الأخرى */
+    margin: calc(var(--spacing-unit) * 4) auto;
+    /* 30px - توسيط الحاوية */
+    padding: var(--padding-medium);
+    /* استخدام متغير الحشو المتوسط */
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+}
+
+.halaqat-page-title {
+    /* يرث h2 من CommonStyles ولكن يمكن تخصيصه هنا */
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    font-size: 2.2em;
+    font-weight: 700;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    font-family: var(--font-family-arabic);
+}
+
+/* 2. تصميم البطاقات (للقوائم والنماذج)
+   ================================================================= */
+.halaqat-list-section,
+.add-halaqa-section {
+    background-color: var(--background-light);
+    /* خلفية فاتحة للأقسام */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+    /* 24px 32px - حشو سخي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    transition: box-shadow var(--transition-base);
+}
+
+.halaqat-list-section:hover,
+.add-halaqa-section:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.halaqat-list-section h3,
+.add-halaqa-section h3 {
+    /* يرث h3 من CommonStyles */
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+/* 3. قائمة الحلقات
+   ================================================================= */
+.halaqat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.halaqat-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+    /* 12px 16px */
+    border-bottom: 1px solid var(--input-border);
+    /* خط فاصل بين العناصر */
+    transition: background-color var(--transition-base);
+}
+
+.halaqat-list li:last-child {
+    border-bottom: none;
+    /* إزالة الخط الفاصل لآخر عنصر */
+}
+
+.halaqat-list li:hover {
+    background-color: var(--background-light);
+    /* خلفية خفيفة عند التحويم */
+}
+
+.halaqa-details {
+    flex-grow: 1;
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    font-family: var(--font-family-arabic);
+}
+
+.halaqa-details span {
+    font-weight: 500;
+}
+
+.halaqa-actions {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 1);
+    /* 8px */
+}
+
+/* 4. نماذج الإضافة والتعديل
+   ================================================================= */
+.add-halaqa-form,
+.edit-halaqa-form {
+    display: flex;
+    flex-wrap: wrap;
+    /* للسماح للعناصر بالانتقال لسطر جديد */
+    gap: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    align-items: flex-end;
+    /* محاذاة العناصر للأسفل */
+}
+
+.add-halaqa-form .form-group,
+.edit-halaqa-form .form-group {
+    flex: 1;
+    /* لجعل مجموعات الحقول تأخذ مساحة متساوية */
+    min-width: 200px;
+    /* عرض أدنى للحقل */
+    margin-bottom: 0;
+    /* إزالة المسافة السفلية الافتراضية لمجموعات الحقول */
+}
+
+.add-halaqa-form .form-group label,
+.edit-halaqa-form .form-group label {
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي للتسميات */
+}
+
+.add-halaqa-form input,
+.add-halaqa-form select,
+.edit-halaqa-form input,
+.edit-halaqa-form select {
+    /* ترث الأنماط من GlobalStyles.css */
+    margin-bottom: 0;
+    /* إزالة المسافة السفلية الافتراضية لحقول الإدخال */
+}
+
+.add-halaqa-form .form-actions,
+.edit-halaqa-form .form-actions {
+    grid-column: 1 / -1;
+    /* يأخذ عرض الشبكة بالكامل */
+    justify-content: flex-start;
+    /* محاذاة الأزرار لليمين */
+    margin-top: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    gap: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+}
+
+/* 7. تصميم الأزرار الخاصة بالصفحة
+   ================================================================= */
+/* الأزرار ترث من .btn في CommonStyles.css */
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button,
+.add-halaqa-button {
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+    /* 8px 16px */
+    font-size: 0.9em;
+    border-radius: var(--border-radius-base);
+    font-weight: 500;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.edit-button {
+    background-color: var(--secondary-color);
+    /* برتقالي للتعديل */
+    color: var(--text-color-light);
+}
+
+.delete-button {
+    background-color: var(--color-danger-btn);
+    /* أحمر هادئ للحذف */
+    color: var(--text-color-light);
+}
+
+.save-button {
+    background-color: var(--primary-color);
+    /* أخضر للحفظ */
+    color: var(--text-color-light);
+}
+
+.cancel-button {
+    background-color: var(--color-text-secondary);
+    /* رمادي للإلغاء */
+    color: var(--text-color-light);
+}
+
+.add-halaqa-button {
+    background-color: var(--primary-color);
+    /* أخضر للإضافة */
+    color: var(--text-color-light);
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
+    /* 10px 20px */
+    font-size: 1em;
+}
+
+.edit-button:hover,
+.delete-button:hover,
+.save-button:hover,
+.cancel-button:hover,
+.add-halaqa-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.edit-button:disabled,
+.delete-button:disabled,
+.save-button:disabled,
+.cancel-button:disabled,
+.add-halaqa-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* الرسائل (خطأ، نجاح، تحميل، لا توجد بيانات، غير مصرح) */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق إدارة الحلقات. */
+.error-message,
+.success-message,
+.loading-message,
+.no-data-message,
+.unauthorized-message {
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.no-data-message {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background-color: var(--background-light);
+    border: 1px solid var(--input-border);
+}
+
+.unauthorized-message {
+    background-color: #FBE9E7;
+    color: #BF360C;
+    border: 1px solid #FFAB91;
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .halaqat-page-container {
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+    }
+
+    .halaqat-page-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .halaqat-list li {
+        flex-direction: column;
+        /* ترتيب العناصر في عمود */
+        align-items: stretch;
+        /* تمديد العناصر لملء العرض */
+        gap: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+
+    .halaqa-actions {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        justify-content: flex-end;
+        /* محاذاة الأزرار لليمين */
+    }
+
+    .edit-button,
+    .delete-button,
+    .save-button,
+    .cancel-button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        margin-top: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+
+    .add-halaqa-form {
+        flex-direction: column;
+        /* ترتيب عناصر النموذج في عمود */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .add-halaqa-form .form-group {
+        width: 100%;
+        /* حقول الإدخال تأخذ عرضًا كاملاً */
+    }
+
+    .add-halaqa-button {
+        width: 100%;
+        /* زر الإضافة يأخذ عرضًا كاملاً */
+        font-size: 1em;
+    }
+}

@@ -1,0 +1,115 @@
+/* =================================================================
+   App Styles - أنماط هيكل التطبيق والحالات العامة
+   =================================================================
+   هذا الملف ينسق الهيكل العام للتطبيق (مثل التذييل اللاصق)
+   والحالات العامة مثل التحميل والرسائل.
+   ================================================================= */
+
+/* 1. استيراد ملفات الأنماط الأساسية
+   ================================================================= */
+@import url('./GlobalStyles.css');
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./CommonStyles.css');
+/* استيراد الأنماط المشتركة للمكونات */
+
+/* 2. تنسيق الهيكل العام (Sticky Footer - التذييل اللاصق)
+   =================================================================
+   يضمن هذا التنسيق أن التذييل يلتصق بأسفل الصفحة حتى لو كان المحتوى قصيرًا. */
+#root {
+    display: flex;
+    flex-direction: column;
+    /* ترتيب العناصر في عمود */
+    min-height: 100vh;
+    /* يضمن أن العنصر الجذر يأخذ ارتفاع الشاشة بالكامل */
+}
+
+main {
+    flex-grow: 1;
+    /* يجعل المحتوى الرئيسي ينمو ليملأ المساحة المتاحة، ويدفع التذييل للأسفل */
+}
+
+/* 3. حالة التحميل بملء الشاشة
+   =================================================================
+   تظهر هذه الشاشة عندما يكون التطبيق في حالة تحميل البيانات الأولية أو المصادقة. */
+.loading-full-page {
+    position: fixed;
+    /* لتغطية الشاشة بالكامل */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* خلفية بيضاء شبه شفافة لإظهار ما تحتها قليلاً */
+    z-index: 9999;
+    /* لضمان ظهورها فوق كل شيء آخر */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* توسيط المحتوى عموديًا */
+    align-items: center;
+    /* توسيط المحتوى أفقيًا */
+    gap: calc(var(--spacing-unit) * 2.5);
+    /* 20px - مسافة بين العناصر */
+    color: var(--primary-color);
+    /* لون النص من لوحة الألوان الأساسية */
+    font-size: 1.2em;
+    /* حجم خط مناسب */
+    font-family: var(--font-family-arabic);
+    /* استخدام الخط العربي لشاشة التحميل */
+    text-align: center;
+}
+
+.loading-spinner {
+    content: '';
+    /* لإنشاء الدوار */
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--secondary-color);
+    /* لون الحدود الخارجية للدوار */
+    border-top-color: var(--primary-color);
+    /* لون الجزء المتحرك من الدوار */
+    border-radius: 50%;
+    /* لجعلها دائرية */
+    animation: spin 1s linear infinite;
+    /* حركة الدوران */
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+        /* تدور 360 درجة */
+    }
+}
+
+/* 4. رسائل عامة (خطأ، نجاح، معلومات)
+   =================================================================
+   هذه الفئات توفر أنماطًا موحدة للرسائل التي تظهر للمستخدم.
+   (ملاحظة: هذه الفئات مكررة أيضًا في CommonStyles.css و GlobalStyles.css
+   لضمان التناسق. يمكن إزالة التكرار إذا كان CommonStyles.css هو المصدر الوحيد لها.) */
+.message {
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin: calc(var(--spacing-unit) * 2) 0;
+    border-radius: var(--border-radius-base);
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: var(--font-size-body);
+}
+
+.message-error {
+    color: var(--color-error);
+    background-color: var(--color-error-bg);
+    border-color: var(--color-error-border);
+}
+
+.message-success {
+    color: var(--color-success);
+    background-color: var(--color-success-bg);
+    border-color: var(--color-success-border);
+}
+
+.message-info {
+    color: var(--color-info);
+    background-color: var(--color-info-bg);
+    border-color: var(--color-info-border);
+}

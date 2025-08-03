@@ -1,0 +1,324 @@
+/* src/styles/StudentSearchGuestStyles.css */
+
+/* استيراد التنسيقات العامة */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+.student-search-guest-container {
+    width: 100%;
+    height: 350px;
+    /* أو أي ارتفاع مناسب */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* عرض أقصى للحاوية */
+    margin: calc(var(--spacing-unit) * 4) auto;
+    /* 30px - توسيط الحاوية */
+    padding: var(--padding-medium);
+    /* استخدام متغير الحشو المتوسط */
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+}
+
+.student-search-guest-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px - مسافة سفلية */
+    font-size: 2.2em;
+    /* حجم خط كبير ومميز */
+    font-weight: 700;
+    /* خط سميك */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* نموذج البحث */
+.search-form {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 1.875);
+    /* 15px */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px */
+    justify-content: center;
+    /* توسيط عناصر النموذج */
+    align-items: center;
+    /* محاذاة عمودية */
+    flex-wrap: wrap;
+    /* للسماح بالعناصر بالانتقال إلى سطر جديد */
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.search-form:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.search-input {
+    flex: 1;
+    /* لجعل حقل الإدخال ينمو ليملأ المساحة */
+    min-width: 250px;
+    /* عرض أدنى للحقل */
+    /* ترث معظم الأنماط من GlobalStyles.css */
+}
+
+.search-button {
+    background-color: var(--primary-color);
+    /* أخضر لزر البحث */
+    color: var(--text-color-light);
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: var(--border-radius-base);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.search-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.search-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* قسم نتائج البحث */
+.search-results-section {
+    padding: var(--padding-medium);
+    border-radius: var(--border-radius-base);
+    background-color: var(--background-light);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.search-results-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.student-details-card {
+    background-color: var(--surface-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    text-align: right;
+}
+
+.student-details-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+.student-details-card p {
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    font-size: 1.05em;
+    color: var(--text-color-dark);
+}
+
+.student-details-card p strong {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* قسم إحصائيات الأداء */
+.performance-stats-section {
+    margin-top: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.performance-stats-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.performance-stats-section h4 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* شبكة مرنة للإحصائيات */
+    gap: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    /* 24px */
+}
+
+.stat-card {
+    background-color: var(--surface-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    text-align: center;
+    transition: box-shadow var(--transition-base);
+}
+
+.stat-card:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.stat-card h5 {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-arabic);
+}
+
+.stat-card p {
+    margin: calc(var(--spacing-unit) * 0.5) 0 0;
+    /* 4px */
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--accent-color);
+    /* لون مميز للأرقام */
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 300px;
+    /* ارتفاع ثابت للرسم البياني */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--surface-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 24px */
+}
+
+.chart-wrapper canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* الرسائل العامة */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق بحث الطلاب للضيوف. */
+.error-message,
+.info-message,
+.loading-message {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 15px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.info-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.loading-message {
+    background-color: var(--color-success-bg);
+    /* لون أخضر فاتح للتحميل في هذه الصفحة */
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .student-search-guest-container {
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .student-search-guest-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .search-form {
+        flex-direction: column;
+        /* ترتيب عناصر النموذج في عمود */
+        gap: calc(var(--spacing-unit) * 1.25);
+        /* 10px */
+    }
+
+    .search-input,
+    .search-button {
+        width: 100%;
+        /* تأخذ عرضًا كاملاً */
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد للإحصائيات */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .stat-card p {
+        font-size: 1.2em;
+    }
+
+    .chart-wrapper {
+        height: 250px;
+        /* تقليل ارتفاع الرسم البياني */
+    }
+}

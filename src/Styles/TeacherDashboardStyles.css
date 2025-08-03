@@ -1,0 +1,319 @@
+/* =================================================================
+   Teacher Dashboard Styles - أنماط لوحة تحكم المعلم
+   =================================================================
+   هذا الملف ينسق صفحة لوحة تحكم المعلم، بما في ذلك
+   قائمة الحلقات المرتبطة، ونموذج إضافة حلقة جديدة.
+   ================================================================= */
+
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+/* 1. الحاوية الرئيسية للصفحة
+   ================================================================= */
+.teacher-dashboard-container {
+    max-width: 900px;
+    /* عرض أقصى للوحة التحكم، متناسق مع DashboardStyles */
+    margin: calc(var(--spacing-unit) * 5) auto;
+    /* 40px - توسيط الحاوية */
+    padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2.5);
+    /* 32px 20px - حشو مناسب */
+    background: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+    /* انتقال ناعم للخلفية والظل */
+}
+
+.teacher-dashboard-container:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح قليلاً عند التحويم */
+}
+
+.teacher-dashboard-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px - مسافة سفلية */
+    font-size: 2.3em;
+    /* حجم خط كبير ومميز */
+    font-weight: 800;
+    /* خط سميك جداً */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    letter-spacing: 0.5px;
+    /* تباعد الأحرف */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* أقسام لوحة التحكم (قائمة الحلقات، إضافة حلقة) */
+.halaqat-list-section,
+.add-halaqa-section {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px - مسافة سفلية بين الأقسام */
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+    /* 24px 16px - حشو مناسب */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية */
+    background: var(--background-light);
+    /* خلفية فاتحة للأقسام */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    transition: box-shadow var(--transition-base);
+    /* انتقال ناعم للظل */
+}
+
+.halaqat-list-section:hover,
+.add-halaqa-section:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.halaqat-list-section h3,
+.add-halaqa-section h3 {
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    font-size: 1.3em;
+    /* حجم خط مناسب */
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    /* خط سفلي رفيع */
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+/* قائمة الحلقات */
+.halaqat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.halaqa-item {
+    display: flex;
+    justify-content: space-between;
+    /* توزيع العناصر بالتساوي */
+    align-items: center;
+    /* محاذاة عمودية */
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+    /* 12px 16px */
+    border-bottom: 1px solid var(--input-border);
+    /* خط فاصل بين العناصر */
+    transition: background-color var(--transition-base);
+    /* انتقال ناعم للخلفية */
+}
+
+.halaqa-item:last-child {
+    border-bottom: none;
+    /* إزالة الخط الفاصل لآخر عنصر */
+}
+
+.halaqa-item:hover {
+    background-color: var(--background-light);
+    /* خلفية خفيفة عند التحويم */
+}
+
+.halaqa-details {
+    flex-grow: 1;
+    /* لجعل التفاصيل تملأ المساحة المتاحة */
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    font-family: var(--font-family-arabic);
+}
+
+.halaqa-actions {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 1);
+    /* 8px - مسافة بين الأزرار */
+}
+
+/* أنماط الأزرار (ترث من CommonStyles.css ولكن يمكن تخصيصها هنا) */
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button,
+.add-halaqa-button {
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+    /* 8px 16px */
+    font-size: 0.9em;
+    border-radius: var(--border-radius-base);
+    font-weight: 500;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.edit-button {
+    background-color: var(--secondary-color);
+    /* برتقالي للتعديل */
+    color: var(--text-color-light);
+}
+
+.delete-button {
+    background-color: var(--color-danger-btn);
+    /* أحمر هادئ للحذف */
+    color: var(--text-color-light);
+}
+
+.save-button {
+    background-color: var(--primary-color);
+    /* أخضر للحفظ */
+    color: var(--text-color-light);
+}
+
+.cancel-button {
+    background-color: var(--color-text-secondary);
+    /* رمادي للإلغاء */
+    color: var(--text-color-light);
+}
+
+.add-halaqa-button {
+    background-color: var(--primary-color);
+    /* أخضر للإضافة */
+    color: var(--text-color-light);
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
+    /* 10px 20px - حشو أكبر قليلاً */
+    font-size: 1em;
+    margin-top: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+}
+
+.add-halaqa-button:hover,
+.edit-button:hover,
+.delete-button:hover,
+.save-button:hover,
+.cancel-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.add-halaqa-button:disabled,
+.edit-button:disabled,
+.delete-button:disabled,
+.save-button:disabled,
+.cancel-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* حقول الإدخال والاختيار في لوحة التحكم */
+.new-halaqa-input,
+.edit-halaqa-input,
+.new-halaqa-select-teacher,
+.edit-halaqa-select-teacher {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    /* ترث معظم الأنماط من GlobalStyles.css */
+}
+
+/* الرسائل (خطأ، نجاح، تحميل، لا توجد بيانات، غير مصرح) */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق لوحة تحكم المعلم. */
+.error-message,
+.success-message,
+.loading-message,
+.no-data-message,
+.unauthorized-message {
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.no-data-message {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background-color: var(--background-light);
+    border: 1px solid var(--input-border);
+}
+
+.unauthorized-message {
+    background-color: #FBE9E7;
+    color: #BF360C;
+    border: 1px solid #FFAB91;
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .teacher-dashboard-container {
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+    }
+
+    .teacher-dashboard-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .halaqa-item {
+        flex-direction: column;
+        /* ترتيب العناصر في عمود */
+        align-items: stretch;
+        /* تمديد العناصر لملء العرض */
+        gap: calc(var(--spacing-unit) * 1.25);
+        /* 10px */
+    }
+
+    .halaqa-actions {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        justify-content: flex-end;
+        /* محاذاة الأزرار لليمين */
+    }
+
+    .edit-button,
+    .delete-button,
+    .save-button,
+    .cancel-button,
+    .add-halaqa-button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        margin-top: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+}

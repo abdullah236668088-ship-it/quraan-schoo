@@ -1,0 +1,189 @@
+/* src/styles/CustomModalStyles.css */
+
+/* استيراد التنسيقات العامة */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+/* طبقة التراكب للمودال (الخلفية المعتمة) */
+.modal-overlay {
+    position: fixed;
+    /* يثبت المودال في مكانه بغض النظر عن التمرير */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* خلفية سوداء شبه شفافة لتعتم المحتوى الخلفي */
+    display: flex;
+    justify-content: center;
+    /* توسيط أفقي للمودال */
+    align-items: center;
+    /* توسيط عمودي للمودال */
+    z-index: 2000;
+    /* لضمان ظهور المودال فوق جميع العناصر الأخرى */
+    opacity: 0;
+    /* يبدأ مخفيًا */
+    visibility: hidden;
+    /* يبدأ غير مرئي */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    /* انتقال ناعم للظهور والاختفاء */
+}
+
+/* حالة الفتح للمودال */
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* محتوى المودال (البطاقة البيضاء المنبثقة) */
+.modal-content {
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    padding: calc(var(--spacing-unit) * 4);
+    /* 32px - حشو سخي */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-medium);
+    /* ظل واضح لإبراز المودال */
+    max-width: 500px;
+    /* عرض أقصى للمودال */
+    width: 90%;
+    /* يأخذ 90% من عرض الشاشة على الأجهزة الصغيرة */
+    text-align: right;
+    /* محاذاة النص لليمين */
+    transform: translateY(-20px);
+    /* يبدأ أعلى قليلاً */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    /* انتقال ناعم عند الظهور */
+    outline: none;
+    /* إزالة التركيز الافتراضي */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+}
+
+/* تأثير عند فتح المودال */
+.modal-overlay.open .modal-content {
+    transform: translateY(0);
+    /* يعود إلى مكانه الأصلي */
+    opacity: 1;
+}
+
+.modal-title {
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    font-size: 1.6em;
+    /* حجم خط مناسب للعنوان */
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    border-bottom: 1px solid var(--input-border);
+    /* خط سفلي رفيع */
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    text-align: center;
+    /* توسيط العنوان */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+    font-weight: 700;
+}
+
+.modal-message {
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    line-height: var(--line-height-base);
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    text-align: center;
+    /* توسيط الرسالة */
+    font-family: var(--font-family-arabic);
+}
+
+.modal-body {
+    margin-bottom: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    text-align: right;
+    color: var(--text-color-dark);
+    font-size: 1em;
+    line-height: var(--line-height-base);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    /* توسيط الأزرار */
+    gap: calc(var(--spacing-unit) * 2);
+    /* 16px - مسافة بين الأزرار */
+}
+
+.modal-confirm-button,
+.modal-cancel-button {
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: var(--border-radius-base);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: var(--shadow-light);
+}
+
+.modal-confirm-button {
+    background-color: var(--primary-color);
+    /* أخضر لزر التأكيد */
+    color: var(--text-color-light);
+    border: 1px solid var(--primary-color);
+}
+
+.modal-confirm-button:hover {
+    background-color: darken(var(--primary-color), 10%);
+    /* لون أغمق عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.modal-cancel-button {
+    background-color: var(--color-text-secondary);
+    /* رمادي لزر الإلغاء */
+    color: var(--text-color-light);
+    border: 1px solid var(--color-text-secondary);
+}
+
+.modal-cancel-button:hover {
+    background-color: darken(var(--color-text-secondary), 10%);
+    /* لون أغمق عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 500px) {
+    .modal-content {
+        padding: calc(var(--spacing-unit) * 3);
+        /* 24px - تقليل الحشو */
+        width: 95%;
+        /* زيادة العرض على الشاشات الصغيرة جدًا */
+    }
+
+    .modal-title {
+        font-size: 1.4em;
+        /* تقليل حجم العنوان */
+    }
+
+    .modal-message {
+        font-size: 1em;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        /* ترتيب الأزرار في عمود */
+        gap: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+
+    .modal-confirm-button,
+    .modal-cancel-button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        font-size: 0.95em;
+    }
+}

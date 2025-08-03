@@ -1,0 +1,330 @@
+/* =================================================================
+   Navigation Bar Styles - أنماط شريط التنقل
+   =================================================================
+   يستخدم هذا الملف المتغيرات من GlobalStyles.css لتوفير تصميم
+   متناسق وهادئ لشريط التنقل والقائمة الجانبية.
+   ================================================================= */
+
+/* استيراد الأنماط العامة لضمان توفر المتغيرات والأنماط الأساسية */
+@import url('./GlobalStyles.css');
+
+/* 1. الحاوية الرئيسية لشريط التنقل
+   ================================================================= */
+.navbar {
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة لشريط التنقل */
+    color: var(--text-color-dark);
+    /* لون النص الأساسي */
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px - حشو مناسب */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف لإبرازه عن المحتوى */
+    position: sticky;
+    /* لجعل شريط التنقل ثابتًا في الأعلى عند التمرير */
+    top: 0;
+    z-index: 1000;
+    /* لضمان ظهوره فوق العناصر الأخرى */
+    direction: rtl;
+    /* ضمان الاتجاه من اليمين لليسار */
+}
+
+/* 2. شريط التنقل لسطح المكتب (الشاشات الكبيرة)
+   ================================================================= */
+.navbar-desktop {
+    display: flex;
+    justify-content: space-between;
+    /* توزيع العناصر بالتساوي مع مسافة بينها */
+    align-items: center;
+    /* محاذاة العناصر عموديًا في المنتصف */
+    max-width: 1200px;
+    /* عرض أقصى لشريط التنقل */
+    margin: 0 auto;
+    /* توسيط شريط التنقل */
+}
+
+.navbar-brand .navbar-logo {
+    color: var(--primary-color);
+    /* لون الشعار الأساسي */
+    text-decoration: none;
+    font-size: 1.5em;
+    /* حجم خط كبير ومميز للشعار */
+    font-weight: bold;
+    transition: color var(--transition-base);
+    /* انتقال ناعم لتغيير اللون */
+    font-family: var(--font-family-arabic);
+    /* استخدام الخط العربي للشعار */
+}
+
+.navbar-brand .navbar-logo:hover {
+    color: var(--secondary-color);
+    /* تغيير اللون عند التحويم */
+}
+
+.navbar-links {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 3);
+    /* 24px - مسافة بين الروابط */
+    list-style: none;
+    /* إزالة نقاط القائمة */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-link {
+    color: var(--text-color-dark);
+    /* لون الروابط الافتراضي */
+    text-decoration: none;
+    font-size: 1.05em;
+    /* حجم خط مناسب للروابط */
+    font-weight: 500;
+    /* وزن خط متوسط */
+    padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1);
+    /* 4px 8px - حشو خفيف */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية خفيفة */
+    transition: background-color var(--transition-base), color var(--transition-base);
+    /* انتقال ناعم */
+}
+
+.navbar-link:hover {
+    background-color: var(--background-light);
+    /* خلفية خفيفة عند التحويم */
+    color: var(--primary-color);
+    /* تغيير لون النص */
+}
+
+.navbar-link.active-link {
+    color: var(--primary-color);
+    /* لون مميز للرابط النشط */
+    font-weight: 700;
+    /* خط سميك للرابط النشط */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 0.5);
+    /* 4px */
+}
+
+.navbar-user-info {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    color: var(--text-color-secondary);
+    /* لون نص ثانوي لمعلومات المستخدم */
+    font-size: 0.95em;
+}
+
+.navbar-logout-button {
+    background-color: var(--color-danger-btn);
+    /* لون أحمر هادئ لزر تسجيل الخروج */
+    color: var(--text-color-light);
+    border: none;
+    padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+    /* 8px 16px */
+    border-radius: var(--border-radius-base);
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.navbar-logout-button:hover {
+    background-color: darken(var(--color-danger-btn), 10%);
+    /* لون أغمق عند التحويم */
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* 3. شريط التنقل للجوال (القائمة الجانبية - Sidebar)
+   ================================================================= */
+.navbar-mobile {
+    display: none;
+    /* يتم إخفاؤه افتراضيًا ويظهر على الشاشات الصغيرة */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-icon {
+    cursor: pointer;
+    color: var(--primary-color);
+    /* لون أيقونة القائمة */
+    transition: transform var(--transition-base);
+}
+
+.menu-icon:hover {
+    transform: scale(1.1);
+    /* تكبير بسيط عند التحويم */
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    /* إخفاء القائمة الجانبية خارج الشاشة */
+    width: 280px;
+    /* عرض القائمة الجانبية */
+    height: 100%;
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    box-shadow: var(--shadow-medium);
+    /* ظل واضح للقائمة الجانبية */
+    z-index: 1001;
+    /* فوق شريط التنقل */
+    transition: right var(--transition-base);
+    /* انتقال ناعم لفتح وإغلاق القائمة */
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    direction: rtl;
+    /* ضمان الاتجاه من اليمين لليسار */
+}
+
+.sidebar.open {
+    right: 0;
+    /* إظهار القائمة الجانبية */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    border-bottom: 1px solid var(--input-border);
+    /* خط فاصل */
+    padding-bottom: calc(var(--spacing-unit) * 2);
+    /* 16px */
+}
+
+.sidebar-header .user-info {
+    font-size: 1.1em;
+    color: var(--primary-color);
+    /* لون مميز لمعلومات المستخدم في القائمة الجانبية */
+    font-weight: 600;
+}
+
+.close-sidebar {
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    /* لون أيقونة الإغلاق */
+    transition: color var(--transition-base);
+}
+
+.close-sidebar:hover {
+    color: var(--color-error);
+    /* تغيير اللون عند التحويم */
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    /* لجعل الروابط تملأ المساحة المتاحة */
+}
+
+.sidebar-links li {
+    margin-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    /* 12px - مسافة بين الأيقونة والنص */
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+    /* 12px 16px */
+    color: var(--text-color-dark);
+    text-decoration: none;
+    font-size: 1.1em;
+    border-radius: var(--border-radius-base);
+    transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+.sidebar-link:hover,
+.sidebar-link.active-link {
+    background-color: var(--background-light);
+    /* خلفية خفيفة عند التحويم أو للرابط النشط */
+    color: var(--primary-color);
+}
+
+.sidebar-icon {
+    color: var(--secondary-color);
+    /* لون الأيقونات في القائمة الجانبية */
+}
+
+.sidebar-link.active-link .sidebar-icon {
+    color: var(--primary-color);
+    /* لون الأيقونة للرابط النشط */
+}
+
+
+.sidebar-logout-button {
+    background-color: transparent;
+    /* زر تسجيل الخروج كزر شفاف */
+    color: var(--color-danger-btn);
+    /* لون أحمر هادئ */
+    border: none;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+    /* 12px 16px */
+    cursor: pointer;
+    font-size: 1.1em;
+    width: 100%;
+    text-align: right;
+    /* محاذاة لليمين */
+    font-family: var(--font-family-base);
+    /* استخدام الخط الأساسي */
+    transition: background-color var(--transition-base), color var(--transition-base);
+    border-top: 1px solid var(--input-border);
+    /* خط فاصل علوي */
+    margin-top: auto;
+    /* يدفع الزر إلى الأسفل */
+}
+
+.sidebar-logout-button:hover {
+    background-color: var(--color-danger-btn);
+    /* خلفية حمراء عند التحويم */
+    color: var(--text-color-light);
+    /* نص فاتح */
+}
+
+/* 5. طبقة التراكب (Overlay)
+   =================================================================
+   تظهر هذه الطبقة لتعتيم الخلفية عند فتح القائمة الجانبية. */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* تعتيم خفيف */
+    z-index: 1000;
+    /* بين المحتوى والقائمة الجانبية */
+    transition: opacity var(--transition-base);
+    /* انتقال ناعم للشفافية */
+}
+
+/* 6. استجابة الشاشات الصغيرة
+   ================================================================= */
+@media (max-width: 768px) {
+    .navbar-desktop {
+        display: none;
+        /* إخفاء شريط التنقل لسطح المكتب */
+    }
+
+    .navbar-mobile {
+        display: flex;
+        /* إظهار شريط التنقل للجوال */
+    }
+
+    .navbar-brand .navbar-logo {
+        font-size: 1.3em;
+        /* تقليل حجم الشعار على الجوال */
+    }
+
+
+}

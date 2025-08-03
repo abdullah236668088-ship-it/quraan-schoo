@@ -1,0 +1,428 @@
+/* GlobalStyles.css - تصميم عصري وهادئ مع دعم الوضع الداكن */
+
+:root {
+    /* === Color Palette - لوحة الألوان === */
+    /* Brand Colors - ألوان العلامة التجارية */
+    --primary-color: #388e3c;
+    /* أخضر داكن / زيتوني - يمثل الهدوء، النمو، الروحانية */
+    --secondary-color: #ff9800;
+    /* برتقالي دافئ / ذهبي - للنشاط، الإشراق، عناصر التمييز */
+    --accent-color: #009688;
+    /* أخضر مزرق / فيروزي - لمسة إضافية من الانتعاش والتميز */
+
+    /* Neutral & Surface Colors - الألوان المحايدة وألوان السطح */
+    --background-light: #f6f8fa;
+    /* رمادي فاتح جدًا / أوف وايت - خلفية عامة نظيفة */
+    --background-dark: #23272f;
+    /* رمادي غامق جدًا / كحلي داكن - لخلفيات الوضع الداكن */
+    --surface-light: #fff;
+    /* أبيض ناصع - لخلفيات البطاقات والمحتوى الرئيسي */
+    --surface-dark: #2c2f36;
+    /* رمادي داكن - لخلفيات البطاقات في الوضع الداكن */
+
+    /* Text Colors - ألوان النصوص */
+    --text-color-dark: #23272f;
+    /* للنصوص الأساسية على الخلفيات الفاتحة */
+    --text-color-light: #f6f8fa;
+    /* للنصوص على الخلفيات الداكنة */
+    --color-quran-text: #4a4a4a;
+    /* رمادي غامق خاص بالنص القرآني للاحترام والتقليد */
+    --color-text-secondary: #607d8b;
+    /* للنصوص الثانوية والوصفية */
+
+    /* Status Colors - ألوان الحالات (نجاح، خطأ، معلومات) */
+    --color-success: #388E3C;
+    --color-success-bg: #E8F5E9;
+    --color-success-border: #A5D6A7;
+    --color-error: #D32F2F;
+    --color-error-bg: #FFEBEE;
+    --color-error-border: #EF9A9A;
+    --color-info: #1976D2;
+    --color-info-bg: #E3F2FD;
+    --color-info-border: #90CAF9;
+    --color-danger-btn: #F44336;
+    /* لون زر الحذف/الخطر */
+
+    /* === Typography - الطباعة والخطوط === */
+    --font-family-arabic: 'Amiri', serif;
+    /* الخط العربي الأساسي المستوحى من الأصالة */
+    --font-family-base: 'Roboto', 'Arial', sans-serif;
+    /* خط Sans-serif للأرقام والنصوص اللاتينية، يوفر وضوحًا وعصرية */
+
+    /* Font Sizes - أحجام الخطوط */
+    --font-size-h1: 2.5em;
+    /* للعناوين الرئيسية جدًا */
+    --font-size-h2: 2em;
+    /* للعناوين الفرعية الرئيسية */
+    --font-size-h3: 1.6em;
+    /* للعناوين الثانوية */
+    --font-size-body: 1em;
+    /* حجم النص العادي */
+    --font-size-small: 0.85em;
+    /* للنصوص الصغيرة والتفاصيل */
+    --font-size-quran: 1.3em;
+    /* حجم خاص للنص القرآني لضمان وضوحه */
+
+    /* Line Heights - ارتفاعات الأسطر */
+    --line-height-base: 1.6;
+    /* ارتفاع سطر قياسي لتحسين قابلية القراءة */
+    --line-height-quran: 2;
+    /* ارتفاع سطر أكبر للنص القرآني لراحة العين */
+
+    /* === Spacing - المسافات === */
+    --spacing-unit: 8px;
+    /* وحدة قياس أساسية لجميع المسافات للحفاظ على التناسق */
+    /* يتم استخدامها كـ calc(var(--spacing-unit) * N) */
+
+    /* === Borders & Shadows - الحدود والظلال === */
+    --border-radius-base: 8px;
+    /* نصف قطر أساسي لجميع العناصر (بطاقات، أزرار، حقول إدخال) */
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+    /* ظل خفيف للبطاقات والعناصر العادية */
+    --shadow-medium: 0 6px 15px rgba(0, 0, 0, 0.12);
+    /* ظل متوسط للعناصر البارزة أو عند التحويم */
+
+    /* Input Specifics - خصائص حقول الإدخال */
+    --input-border: #e0e0e0;
+    /* لون حدود حقول الإدخال الافتراضي */
+    --input-border-focus: var(--primary-color);
+    /* لون حدود حقول الإدخال عند التركيز */
+
+    /* Transition - الانتقال (للتأثيرات الناعمة) */
+    --transition-base: 0.3s ease-in-out;
+    /* انتقال أساسي لتأثيرات التحويم والتركيز */
+}
+
+/* إعادة تعيين أساسية لبعض عناصر HTML */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-base);
+    /* استخدام الخط الأساسي للأرقام والنصوص اللاتينية */
+    color: var(--text-color-dark);
+    /* لون النص الافتراضي */
+    background-color: var(--background-light);
+    /* لون الخلفية الافتراضي */
+    line-height: var(--line-height-base);
+    /* ارتفاع السطر الافتراضي */
+    direction: rtl;
+    /* تعيين الاتجاه الافتراضي من اليمين إلى اليسار */
+    text-align: right;
+    /* محاذاة النص الافتراضية لليمين */
+    -webkit-font-smoothing: antialiased;
+    /* تحسين مظهر الخطوط في المتصفحات */
+    -moz-osx-font-smoothing: grayscale;
+    /* تحسين مظهر الخطوط في المتصفحات */
+}
+
+/* تنسيق عام للعناوين */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 calc(var(--spacing-unit) * 2.25) 0;
+    /* مسافة سفلية موحدة للعناوين (18px) */
+    font-weight: bold;
+    /* العناوين بخط سميك */
+    color: var(--primary-color);
+    /* لون العناوين الأساسي */
+    letter-spacing: 0.5px;
+    /* تباعد الأحرف لتحسين المظهر */
+    font-family: var(--font-family-arabic);
+    /* استخدام الخط العربي للعناوين */
+}
+
+/* تنسيق عام للفقرات */
+p {
+    margin: 0 0 calc(var(--spacing-unit) * 2) 0;
+    /* مسافة سفلية موحدة للفقرات (16px) */
+}
+
+/* تنسيق عام للروابط */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* تنسيق عام لحقول الإدخال والاختيار ومناطق النص */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="url"],
+select,
+textarea {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius-base);
+    /* استخدام المتغير الأساسي */
+    width: 100%;
+    margin-bottom: calc(var(--spacing-unit) * 2.25);
+    /* 18px */
+    background: var(--surface-light);
+    color: var(--text-color-dark);
+    font-size: var(--font-size-body);
+    /* استخدام حجم الخط الأساسي */
+    transition: border-color var(--transition-base), background var(--transition-base), color var(--transition-base);
+    font-family: var(--font-family-arabic);
+    /* تطبيق الخط العربي على حقول الإدخال */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--input-border-focus);
+    outline: none;
+    background: #f1fff0;
+    /* لون خلفية فاتح عند التركيز */
+}
+
+/* تنسيق عام للحاويات الرئيسية للصفحات */
+.container {
+    max-width: 1100px;
+    margin: calc(var(--spacing-unit) * 4) auto;
+    /* 32px */
+    padding: calc(var(--spacing-unit) * 4) calc(var(--spacing-unit) * 2.5);
+    /* 32px 20px */
+    background: var(--surface-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+}
+
+/* تنسيق لـ main tag لضمان التصاق التذييل */
+main {
+    flex-grow: 1;
+}
+
+/* فئات الرسائل العامة (خطأ، نجاح، معلومات) */
+.message {
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin: calc(var(--spacing-unit) * 2) 0;
+    border-radius: var(--border-radius-base);
+    border: 1px solid transparent;
+    text-align: center;
+    font-size: var(--font-size-body);
+}
+
+.message-error {
+    color: var(--color-error);
+    background-color: var(--color-error-bg);
+    border-color: var(--color-error-border);
+}
+
+.message-success {
+    color: var(--color-success);
+    background-color: var(--color-success-bg);
+    border-color: var(--color-success-border);
+}
+
+.message-info {
+    color: var(--color-info);
+    background-color: var(--color-info-bg);
+    border-color: var(--color-info-border);
+}
+
+.message-unauthorized {
+    background-color: #FBE9E7;
+    /* لون خاص للرسائل غير المصرح بها */
+    color: #BF360C;
+    border: 1px solid #FFAB91;
+}
+
+/* تنسيقات خاصة بالنص القرآني */
+.quran-text {
+    font-family: var(--font-family-arabic);
+    font-size: var(--font-size-quran);
+    color: var(--color-quran-text);
+    margin: 0;
+    line-height: var(--line-height-quran);
+}
+
+/* صندوق الملاحظات الهامة */
+.note {
+    background-color: var(--color-info-bg);
+    /* استخدام لون معلومات ليتناسق مع الهوية */
+    border: 1px solid var(--color-info-border);
+    border-right-width: 5px;
+    /* شريط جانبي مميز */
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2.5);
+    /* 16px 20px */
+    margin-top: 2em;
+    border-radius: var(--border-radius-base);
+    color: var(--color-info);
+}
+
+.note p {
+    margin-bottom: 0;
+}
+
+/* فاصل زخرفي بسيط */
+.islamic-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to left, transparent, var(--primary-color), transparent);
+    opacity: 0.5;
+    margin: 2.5em 0;
+}
+
+/* الأزرار التفاعلية - الأنماط الأساسية */
+.btn {
+    display: inline-block;
+    padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
+    /* 10px 20px */
+    font-size: var(--font-size-body);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--border-radius-base);
+    cursor: pointer;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+    /* إضافة ظل خفيف للأزرار */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    /* رفع بسيط عند التحويم */
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.btn:active {
+    transform: translateY(0);
+    /* العودة عند النقر */
+    box-shadow: var(--shadow-light);
+}
+
+/* أزرار الحالة (يمكن استخدامها مباشرة أو كقاعدة لأزرار أخرى) */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    color: var(--text-color-light);
+}
+
+.btn-danger {
+    background-color: var(--color-danger-btn);
+    color: var(--text-color-light);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+/* تعطيل الأزرار */
+.btn:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* تنسيق عام للصور */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    /* يزيل المسافة السفلية غير المرغوبة */
+}
+
+/* تنسيق عام للقوائم */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* تنسيق عام للجداول */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    background-color: var(--surface-light);
+    border-radius: var(--border-radius-base);
+    overflow: hidden;
+    /* لضمان تطبيق border-radius على الجدول */
+    box-shadow: var(--shadow-light);
+}
+
+th,
+td {
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    text-align: right;
+    border-bottom: 1px solid var(--input-border);
+    /* حدود خفيفة بين الصفوف */
+}
+
+th {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+    font-weight: bold;
+    font-family: var(--font-family-arabic);
+    font-size: 1.05em;
+}
+
+tr:last-child td {
+    border-bottom: none;
+    /* إزالة الحد السفلي لآخر صف */
+}
+
+/* صفوف بديلة لتحسين القراءة */
+tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+    /* لون خفيف جدًا لصف بديل */
+}
+
+/* تنسيق لروابط التنقل (إذا كانت تستخدم كـ 'buttons-as-links') */
+.button-as-link {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+    text-decoration: underline;
+    transition: color var(--transition-base);
+}
+
+.button-as-link:hover {
+    color: var(--secondary-color);
+}

@@ -1,0 +1,249 @@
+/* src/styles/AdvertisementsPageStyles.css */
+
+/* استيراد التنسيقات العامة */
+@import url('./GlobalStyles.css');
+@import url('./CommonStyles.css');
+
+.advertisements-page-container {
+    max-width: 1000px;
+    /* عرض أقصى للحاوية */
+    margin: calc(var(--spacing-unit) * 4) auto;
+    /* 30px - توسيط الحاوية */
+    padding: var(--padding-medium);
+    /* استخدام متغير الحشو المتوسط */
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+}
+
+.page-title {
+    /* يستخدم نفس نمط العناوين الرئيسية للصفحات */
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px */
+    font-size: 2.2em;
+    font-weight: 700;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    font-family: var(--font-family-arabic);
+}
+
+/* شبكة الإعلانات */
+.advertisements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* شبكة مرنة لبطاقات الإعلانات */
+    gap: calc(var(--spacing-unit) * 3);
+    /* 24px - مسافة بين البطاقات */
+    margin-top: calc(var(--spacing-unit) * 4);
+    /* 32px */
+}
+
+.advertisement-card {
+    background-color: var(--background-light);
+    /* خلفية فاتحة للبطاقة */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    /* لإخفاء أي جزء زائد من الصورة */
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    /* انتقال ناعم عند التحويم */
+    display: flex;
+    flex-direction: column;
+    /* ترتيب المحتوى عموديًا */
+}
+
+.advertisement-card:hover {
+    transform: translateY(-5px);
+    /* رفع البطاقة قليلاً عند التحويم */
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.advertisement-image {
+    width: 100%;
+    height: 200px;
+    /* ارتفاع ثابت للصور */
+    object-fit: cover;
+    /* لضمان تغطية الصورة للمساحة دون تشويه */
+    border-top-left-radius: var(--border-radius-base);
+    /* زوايا دائرية علوية */
+    border-top-right-radius: var(--border-radius-base);
+}
+
+.advertisement-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    /* خلفية رمادية فاتحة */
+    border-radius: var(--border-radius-base);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    box-shadow: var(--shadow-light);
+}
+
+.advertisement-image-placeholder .placeholder-text {
+    font-size: 1.1em;
+}
+
+.advertisement-title {
+    padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 2.5) 0;
+    /* 20px 20px 0 */
+    margin-top: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    font-size: 1.4em;
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    font-family: var(--font-family-arabic);
+    text-align: right;
+}
+
+.advertisement-description {
+    padding: 0 calc(var(--spacing-unit) * 2.5);
+    /* 0 20px */
+    flex-grow: 1;
+    /* لجعل الوصف ينمو ويملأ المساحة المتاحة */
+    font-size: 1em;
+    line-height: var(--line-height-base);
+    color: var(--text-color-dark);
+    text-align: right;
+}
+
+.advertisement-date {
+    padding: 0 calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 2.5);
+    /* 0 20px 20px */
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+    margin-top: auto;
+    /* يدفع التاريخ إلى الأسفل في البطاقة */
+    text-align: right;
+}
+
+/* رسالة لا توجد إعلانات */
+.no-advertisements-message {
+    padding: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background-color: var(--background-light);
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    margin-top: calc(var(--spacing-unit) * 4);
+    /* 32px */
+}
+
+/* زر "المزيد من الإعلانات" (Load More Button) */
+.load-more-button {
+    display: block;
+    /* لجعل الزر يأخذ عرضًا كاملاً */
+    margin: calc(var(--spacing-unit) * 5) auto;
+    /* 40px - توسيط الزر مع مسافة علوية وسفلية */
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    background-color: var(--accent-color);
+    /* لون مميز لزر التحميل */
+    color: var(--text-color-light);
+    border-radius: var(--border-radius-base);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+    border: none;
+    cursor: pointer;
+}
+
+.load-more-button:hover {
+    background-color: darken(var(--accent-color), 10%);
+    /* لون أغمق عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.load-more-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* الرسائل العامة (تحميل، خطأ) */
+.loading-message,
+.error-message {
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .advertisements-page-container {
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .page-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .advertisements-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد لبطاقات الإعلانات */
+        gap: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .advertisement-image,
+    .advertisement-image-placeholder {
+        height: 180px;
+        /* تقليل ارتفاع الصورة */
+    }
+
+    .advertisement-title {
+        font-size: 1.2em;
+    }
+
+    .advertisement-description {
+        font-size: 0.95em;
+    }
+
+    .load-more-button {
+        font-size: 1em;
+        padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 2.5);
+        /* 10px 20px */
+    }
+}

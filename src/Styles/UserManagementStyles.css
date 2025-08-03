@@ -1,0 +1,418 @@
+@import url('./GlobalStyles.css');
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./CommonStyles.css');
+/* استيراد الأنماط المشتركة */
+
+.user-management-container {
+    max-width: 1100px;
+    /* عرض أقصى للحاوية، مناسب للجداول الكبيرة */
+    margin: calc(var(--spacing-unit) * 5) auto;
+    /* 40px - توسيط الحاوية */
+    padding: calc(var(--spacing-unit) * 4.5) calc(var(--spacing-unit) * 3);
+    /* 36px 24px - حشو مناسب */
+    background: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+    /* انتقال ناعم للخلفية والظل */
+}
+
+.user-management-container:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح قليلاً عند التحويم */
+}
+
+.user-management-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px - مسافة سفلية */
+    font-size: 2.1em;
+    /* حجم خط كبير ومميز */
+    font-weight: 800;
+    /* خط سميك جداً */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    letter-spacing: 0.5px;
+    /* تباعد الأحرف */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* التبويبات (Tabs) */
+.tabs {
+    display: flex;
+    justify-content: center;
+    /* توسيط التبويبات */
+    margin-bottom: calc(var(--spacing-unit) * 2.25);
+    /* 18px */
+    border-bottom: 2px solid var(--input-border);
+    /* خط سفلي فاصل للتبويبات */
+}
+
+.tab-button {
+    background: none;
+    /* خلفية شفافة */
+    border: none;
+    padding: calc(var(--spacing-unit) * 1.625) calc(var(--spacing-unit) * 2.75);
+    /* 13px 22px */
+    font-size: 1.05em;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    /* لون نص عادي */
+    cursor: pointer;
+    transition: color var(--transition-base), border-bottom-color var(--transition-base);
+    border-bottom: 2px solid transparent;
+    /* خط سفلي شفاف افتراضي */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+.tab-button:hover {
+    color: var(--primary-color);
+    /* تغيير اللون عند التحويم */
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    /* لون مميز للتبويبة النشطة */
+    border-bottom-color: var(--secondary-color);
+    /* خط سفلي بلون التمييز للتبويبة النشطة */
+    font-weight: 700;
+}
+
+/* أقسام إدارة المستخدمين (قائمة المستخدمين، نموذج المستخدم) */
+.users-list-section,
+.user-form-section {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 4);
+    /* 24px 32px */
+    border-radius: var(--border-radius-base);
+    background-color: var(--background-light);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.users-list-section:hover,
+.user-form-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.users-list-section h3,
+.user-form-section h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+/* نموذج إضافة/تعديل المستخدم */
+.user-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* شبكة مرنة لحقول النموذج */
+    gap: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+}
+
+.user-form-grid .form-group {
+    margin-bottom: 0;
+    /* إزالة المسافة السفلية الافتراضية */
+}
+
+.user-form-grid .form-group label {
+    font-family: var(--font-family-arabic);
+}
+
+.user-form-grid .form-group input,
+.user-form-grid .form-group select {
+    margin-bottom: 0;
+}
+
+/* حقل isBlocked */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    margin-top: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    grid-column: span 2;
+    /* لجعلها تمتد على عمودين في الشبكة */
+}
+
+.checkbox-label {
+    font-weight: 600;
+    color: var(--text-color-dark);
+    font-size: 0.95em;
+    cursor: pointer;
+}
+
+.form-checkbox {
+    width: 20px;
+    /* حجم مخصص لمربع الاختيار */
+    height: 20px;
+    margin-bottom: 0;
+    /* إزالة الهامش السفلي الافتراضي */
+    cursor: pointer;
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    /* الأزرار تأخذ عرض الشبكة بالكامل */
+    display: flex;
+    justify-content: flex-start;
+    /* محاذاة الأزرار لليمين */
+    gap: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 24px */
+}
+
+/* جدول عرض المستخدمين */
+.users-table-container {
+    overflow-x: auto;
+    /* لجعل الجدول قابلاً للتمرير أفقيًا على الشاشات الصغيرة */
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+}
+
+.users-table {
+    width: 100%;
+    min-width: 800px;
+    /* عرض أدنى للجدول لمنع التكدس */
+    border-collapse: collapse;
+    background-color: var(--surface-light);
+    border-radius: var(--border-radius-base);
+    overflow: hidden;
+}
+
+.users-table th,
+.users-table td {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    text-align: right;
+    border-bottom: 1px solid var(--input-border);
+    font-family: var(--font-family-arabic);
+}
+
+.users-table th {
+    background-color: var(--background-light);
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.users-table tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.users-table tbody tr:hover {
+    background-color: var(--background-light);
+}
+
+.users-table .actions-cell {
+    white-space: nowrap;
+    display: flex;
+    gap: calc(var(--spacing-unit) * 0.75);
+    /* 6px */
+    justify-content: flex-end;
+}
+
+/* الأزرار (إضافة، تعديل، حذف، حفظ، إلغاء) */
+.submit-button,
+.cancel-button,
+.edit-button,
+.delete-button {
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    /* 8px 16px */
+    font-size: 0.95em;
+    border-radius: var(--border-radius-base);
+    font-weight: 500;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.submit-button {
+    background-color: var(--primary-color);
+    color: var(--text-color-light);
+}
+
+.cancel-button {
+    background-color: var(--color-text-secondary);
+    color: var(--text-color-light);
+}
+
+.edit-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color-light);
+}
+
+.delete-button {
+    background-color: var(--color-danger-btn);
+    color: var(--text-color-light);
+}
+
+.submit-button:hover,
+.cancel-button:hover,
+.edit-button:hover,
+.delete-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.submit-button:disabled,
+.cancel-button:disabled,
+.edit-button:disabled,
+.delete-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* الرسائل (خطأ، نجاح، تحميل، لا توجد بيانات، غير مصرح) */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق إدارة المستخدمين. */
+.error-message,
+.success-message,
+.loading-message,
+.no-data-message,
+.unauthorized-message {
+    padding: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.no-data-message {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background-color: var(--background-light);
+    border: 1px solid var(--input-border);
+}
+
+.unauthorized-message {
+    background-color: #FBE9E7;
+    color: #BF360C;
+    border: 1px solid #FFAB91;
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .user-management-container {
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .user-management-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .tabs {
+        flex-direction: column;
+        /* ترتيب التبويبات في عمود */
+        align-items: center;
+        /* توسيط التبويبات */
+    }
+
+    .tab-button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+        margin-bottom: calc(var(--spacing-unit) * 0.5);
+        /* 5px */
+        padding: calc(var(--spacing-unit) * 1.25) calc(var(--spacing-unit) * 1.875);
+        /* 10px 15px */
+        font-size: 1em;
+    }
+
+    .users-table th,
+    .users-table td {
+        padding: calc(var(--spacing-unit) * 1);
+        /* 8px */
+        font-size: 0.85em;
+        /* تقليل حجم الخط */
+    }
+
+    .users-table .actions-cell {
+        flex-direction: column;
+        /* أزرار الإجراءات في عمود */
+        gap: calc(var(--spacing-unit) * 0.5);
+        /* 4px */
+    }
+
+    .users-table .actions-cell button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+    }
+
+    .user-form-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .checkbox-group {
+        grid-column: span 1;
+        /* يعود لعمود واحد */
+    }
+
+    .form-actions {
+        flex-direction: column;
+        /* الأزرار في عمود واحد */
+        gap: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+
+    .submit-button,
+    .cancel-button {
+        width: 100%;
+        /* الأزرار تأخذ عرضًا كاملاً */
+    }
+}

@@ -1,0 +1,131 @@
+rules_version = '2'; // تحديد إصدار قواعد الأمان
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- دوال التحقق من الدور ---
+    function getUserRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return request.auth != null && getUserRole() == 'admin';
+    }
+
+    function isTeacher() {
+      return request.auth != null && getUserRole() == 'teacher';
+    }
+
+    function isGuest() {
+      return request.auth != null && getUserRole() == 'guest';
+    }
+
+    function isAssociatedStudent(studentId) {
+      return request.auth != null &&
+             isGuest() &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.associatedStudents.hasAny([studentId]);
+    }
+
+    function isTeacherOfHalaqa(halaqaId) {
+      return request.auth != null && isTeacher() &&
+             get(/databases/$(database)/documents/halaqat/$(halaqaId)).data.teacherId == request.auth.uid;
+    }
+
+    function isTeacherOfStudent(studentId) {
+      let studentHalaqaId = get(/databases/$(database)/documents/students/$(studentId)).data.halaqaId;
+      return studentHalaqaId != null && isTeacherOfHalaqa(studentHalaqaId);
+    }
+
+    // --- قواعد المجموعات ---
+
+    // 1. users
+    match /users/{userId} {
+      allow create: if request.auth != null &&
+                    request.auth.uid == userId &&
+                    request.resource.data.role == 'guest' &&
+                    request.resource.data.email == request.auth.token.email &&
+                    request.resource.data.keys().hasAll(['email', 'role', 'createdAt']);
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow update: if request.auth != null &&
+                    ((request.auth.uid == userId && request.resource.data.role == resource.data.role) ||
+                     isAdmin());
+      allow delete: if isAdmin();
+    }
+
+    // 2. halaqat
+    match /halaqat/{halaqaId} {
+      allow read: if request.auth != null && (isAdmin() || isTeacher() || isGuest());
+      allow create: if request.auth != null &&
+                    (isAdmin() || (isTeacher() && request.resource.data.teacherId == request.auth.uid));
+      allow update: if request.auth != null &&
+                    (isAdmin() || (isTeacher() && resource.data.teacherId == request.auth.uid));
+      allow delete: if request.auth != null &&
+                    (isAdmin() || (isTeacher() && resource.data.teacherId == request.auth.uid));
+    }
+
+    // 3. students
+    match /students/{studentId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null &&
+                    (isAdmin() || (isTeacher() && isTeacherOfHalaqa(request.resource.data.halaqaId)));
+      allow update: if request.auth != null &&
+                    (isAdmin() || (isTeacher() && isTeacherOfHalaqa(resource.data.halaqaId)));
+      allow delete: if request.auth != null &&
+                    (isAdmin() || (isTeacher() && isTeacherOfHalaqa(resource.data.halaqaId)));
+    }
+
+    // 4. weeklyReports
+    match /weeklyReports/{reportId} {
+      allow read: if request.auth != null &&
+                  (isAdmin() ||
+                   (isTeacher() && isTeacherOfStudent(resource.data.studentId)) ||
+                   (isGuest() && isAssociatedStudent(resource.data.studentId)));
+      allow write: if request.auth != null &&
+                   (isAdmin() || (isTeacher() && request.resource.data.teacherId == request.auth.uid));
+      allow delete: if request.auth != null &&
+                    (isAdmin() || (isTeacher() && resource.data.teacherId == request.auth.uid));
+    }
+
+    // 5. activities
+    match /activities/{activityId} {
+      allow read: if true;
+      allow write: if request.auth != null && (isAdmin() || isTeacher());
+    }
+
+    // 6. teachers
+    match /teachers/{teacherId} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+
+    // 7. monthly_targets
+    match /monthly_targets/{targetId} {
+      allow read: if request.auth != null &&
+                  (isAdmin() || (isTeacher() && resource.data.teacherId == request.auth.uid));
+      allow write: if request.auth != null &&
+                   (isAdmin() || (isTeacher() && request.resource.data.teacherId == request.auth.uid));
+    }
+
+    // 8. annual_summaries
+    match /annual_summaries/{summaryId} {
+      allow create, update: if request.auth.uid == 'firebase-adminsdk-fbsvc@quraan-memorization-web.iam.gserviceaccount.com';
+      allow read: if request.auth != null && (isAdmin() || isTeacher());
+    }
+
+    // 9. settings
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 10. Canvas artifacts (عام/خاص)
+    match /artifacts/{appId}/public/data/{collection=**} {
+      allow read, write: if request.auth != null;
+    }
+
+    match /artifacts/{appId}/users/{userId}/{collection=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+  }
+}

@@ -1,0 +1,292 @@
+/* src/styles/HomePage.css */
+@import url('./GlobalStyles.css');
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./CommonStyles.css');
+/* استيراد الأنماط المشتركة */
+
+.homepage-container {
+    text-align: center;
+    /* توسيط المحتوى العام للصفحة */
+    padding: calc(var(--spacing-unit) * 2.5);
+    /* 20px - حشو عام للصفحة */
+}
+
+.homepage-header {
+    background-color: var(--primary-color);
+    /* خلفية بلون العلامة التجارية الأساسي */
+    color: var(--text-color-light);
+    /* نص فاتح على خلفية داكنة */
+    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 2.5);
+    /* 40px 20px - حشو سخي للترويسة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-medium);
+    /* ظل متوسط لإبراز الترويسة */
+    margin-bottom: calc(var(--spacing-unit) * 5);
+    /* 40px - مسافة سفلية كبيرة */
+    /* يمكن إضافة زخرفة إسلامية خفيفة هنا لخلق جو روحاني هادئ */
+    /* مثال: background-image: url('../assets/subtle-islamic-pattern.png'); */
+    /* background-repeat: repeat; */
+    /* background-size: 50px; */
+    /* opacity: 0.1; */
+}
+
+.homepage-header h1 {
+    margin: 0;
+    font-size: var(--font-size-h1);
+    /* استخدام حجم الخط الكبير للعناوين الرئيسية */
+    font-weight: 700;
+    /* خط سميك */
+    color: var(--text-color-light);
+    /* لون النص الفاتح ليتناسب مع الخلفية الداكنة */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+.homepage-header p {
+    margin-top: calc(var(--spacing-unit) * 1.25);
+    /* 10px - مسافة علوية للفقرة */
+    font-size: 1.2em;
+    /* حجم خط مناسب للوصف */
+    opacity: 0.9;
+    /* شفافية خفيفة لإضافة عمق */
+}
+
+/* قسم الأنشطة الأخيرة */
+.recent-activities-section {
+    max-width: 1200px;
+    /* عرض أقصى للقسم */
+    margin: 0 auto;
+    /* توسيط القسم */
+    padding: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+}
+
+.recent-activities-section h2 {
+    font-size: var(--font-size-h2);
+    /* حجم خط مناسب لعنوان القسم */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 30px */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    display: inline-block;
+    /* لجعل الخط السفلي يقتصر على عرض النص */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* شبكة مرنة للبطاقات */
+    gap: calc(var(--spacing-unit) * 3);
+    /* 24px - مسافة بين البطاقات */
+    margin-top: calc(var(--spacing-unit) * 4);
+    /* 32px */
+}
+
+.activity-card-homepage {
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة للبطاقة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    overflow: hidden;
+    /* لإخفاء أي جزء زائد من الصورة */
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+    /* انتقال ناعم عند التحويم */
+    display: flex;
+    flex-direction: column;
+    /* ترتيب المحتوى عموديًا */
+}
+
+.activity-card-homepage:hover {
+    transform: translateY(-5px);
+    /* رفع البطاقة قليلاً عند التحويم */
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح عند التحويم */
+}
+
+.activity-card-image {
+    width: 100%;
+    height: 200px;
+    /* ارتفاع ثابت للصور */
+    object-fit: cover;
+    /* لضمان تغطية الصورة للمساحة دون تشويه */
+    border-top-left-radius: var(--border-radius-base);
+    /* زوايا دائرية علوية */
+    border-top-right-radius: var(--border-radius-base);
+}
+
+.activity-card-content {
+    padding: calc(var(--spacing-unit) * 2.5);
+    /* 20px - حشو داخلي للمحتوى */
+    flex-grow: 1;
+    /* لجعل المحتوى ينمو ويملأ المساحة المتاحة */
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    /* محاذاة النص لليمين */
+}
+
+.activity-card-content h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+    /* حجم خط مناسب لعنوان النشاط */
+    color: var(--secondary-color);
+    /* لون مميز لعنوان النشاط */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+.activity-card-date {
+    font-size: 0.9em;
+    /* حجم خط أصغر للتاريخ */
+    color: var(--color-text-secondary);
+    /* لون نص ثانوي */
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    /* 15px */
+}
+
+.activity-card-content p {
+    flex-grow: 1;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    /* 15px */
+    line-height: 1.6;
+    /* ارتفاع سطر مريح للقراءة */
+    color: var(--text-color-dark);
+    /* لون نص عادي */
+}
+
+.activity-card-location {
+    font-size: 0.9em;
+    color: var(--primary-color);
+    /* لون الموقع بلون أساسي */
+    margin-top: auto;
+    /* يدفع الموقع إلى الأسفل في البطاقة */
+    font-weight: 500;
+}
+
+.view-all-container {
+    margin-top: calc(var(--spacing-unit) * 5);
+    /* 40px - مسافة علوية لزر "عرض الكل" */
+}
+
+.view-all-link {
+    display: inline-block;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+    /* 12px 24px */
+    background-color: var(--accent-color);
+    /* استخدام لون التمييز لزر "عرض الكل" */
+    color: var(--text-color-light);
+    border-radius: var(--border-radius-base);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+    box-shadow: var(--shadow-light);
+}
+
+.view-all-link:hover {
+    background-color: darken(var(--accent-color), 10%);
+    /* لون أغمق عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* قسم "عن نظامنا" */
+.about-section {
+    max-width: 900px;
+    /* عرض أقصى للقسم */
+    margin: calc(var(--spacing-unit) * 8) auto;
+    /* 64px - مسافة علوية وسفلية كبيرة */
+    padding: calc(var(--spacing-unit) * 5);
+    /* 40px */
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    text-align: right;
+    /* محاذاة النص لليمين */
+}
+
+.about-section .section-title {
+    font-size: var(--font-size-h2);
+    color: var(--primary-color);
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    border-bottom: 2px solid var(--secondary-color);
+    display: inline-block;
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    font-family: var(--font-family-arabic);
+}
+
+.about-section .about-text {
+    font-size: 1.1em;
+    line-height: var(--line-height-base);
+    color: var(--text-color-dark);
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+}
+
+.about-section .about-text:last-child {
+    margin-bottom: 0;
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .homepage-header {
+        padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+        /* تقليل الحشو */
+        margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .homepage-header h1 {
+        font-size: 2em;
+        /* تقليل حجم الخط */
+    }
+
+    .homepage-header p {
+        font-size: 1em;
+    }
+
+    .recent-activities-section h2,
+    .about-section .section-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+        margin-bottom: calc(var(--spacing-unit) * 3);
+    }
+
+    .activities-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد على الشاشات الصغيرة */
+        gap: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .activity-card-image {
+        height: 180px;
+        /* تقليل ارتفاع الصورة */
+    }
+
+    .activity-card-content {
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .about-section {
+        margin: calc(var(--spacing-unit) * 5) auto;
+        /* 40px */
+        padding: calc(var(--spacing-unit) * 3);
+        /* 24px */
+    }
+
+    .about-section .about-text {
+        font-size: 1em;
+    }
+}

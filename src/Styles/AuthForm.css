@@ -1,0 +1,209 @@
+/* =================================================================
+   Authentication Form Styles - أنماط نماذج الدخول والتسجيل
+   =================================================================
+   هذا الملف ينسق نماذج تسجيل الدخول والتسجيل الجديدة لضمان
+   تناسقها مع الهوية البصرية الهادئة للتطبيق.
+   ================================================================= */
+
+/* 1. الحاوية الرئيسية التي توسط النموذج
+   ================================================================= */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    /* توسيط أفقي */
+    align-items: center;
+    /* توسيط عمودي */
+    min-height: 80vh;
+    /* لضمان وجود مساحة كافية في الشاشة */
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px - مسافة داخلية */
+    background-color: var(--background-light);
+    /* خلفية فاتحة وهادئة */
+    direction: rtl;
+    /* ضمان الاتجاه من اليمين لليسار */
+    text-align: right;
+    /* ضمان محاذاة النص لليمين */
+}
+
+/* 2. بطاقة النموذج
+   ================================================================= */
+.auth-form-card {
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة للبطاقة */
+    padding: calc(var(--spacing-unit) * 5);
+    /* 40px - مسافات داخلية سخية */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف لإبراز البطاقة */
+    max-width: 450px;
+    /* عرض أقصى للبطاقة */
+    width: 100%;
+    /* تأخذ العرض المتاح */
+    box-sizing: border-box;
+    /* لضمان أن الحشو لا يزيد العرض الكلي */
+    transition: box-shadow var(--transition-base);
+    /* انتقال ناعم للظل عند التحويم */
+}
+
+.auth-form-card:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح قليلاً عند التحويم */
+}
+
+/* 3. عنوان النموذج
+   ================================================================= */
+.auth-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px - مسافة سفلية */
+    font-size: var(--font-size-h2);
+    /* حجم خط كبير ومميز */
+    font-weight: bold;
+    /* وزن خط سميك */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي مميز بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.5);
+    /* 12px - مسافة بين العنوان والخط */
+}
+
+/* 4. مجموعات حقول النموذج
+   ================================================================= */
+.form-group {
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px - مسافة سفلية بين مجموعات الحقول */
+    /* التسميات وحقول الإدخال ترث الأنماط من CommonStyles.css و GlobalStyles.css */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-weight: 600;
+    color: var(--text-color-dark);
+    font-size: 0.95em;
+}
+
+
+/* 5. الأزرار والروابط
+   ================================================================= */
+.auth-button {
+    /* يرث من .btn في CommonStyles.css ولكن مع تعديلات */
+    display: block;
+    /* لجعل الزر يأخذ عرضًا كاملاً */
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px - حشو أكبر للزر */
+    font-size: 1.2em;
+    /* حجم خط أكبر للزر */
+    margin-top: calc(var(--spacing-unit) * 2.5);
+    /* 20px - مسافة علوية */
+    background-color: var(--primary-color);
+    /* لون أساسي مميز */
+    color: var(--text-color-light);
+    /* نص فاتح على خلفية داكنة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.auth-button:hover {
+    background-color: var(--secondary-color);
+    /* تغيير اللون عند التحويم */
+    transform: translateY(-2px);
+    /* رفع بسيط */
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح */
+}
+
+.auth-button:disabled {
+    background-color: #cccccc;
+    /* لون رمادي عند التعطيل */
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.auth-link,
+.reset-password-button {
+    display: block;
+    text-align: center;
+    margin-top: calc(var(--spacing-unit) * 2);
+    /* 16px - مسافة علوية */
+    font-size: 0.95em;
+    /* حجم خط أصغر قليلاً */
+    color: var(--color-text-secondary);
+    /* لون نص ثانوي */
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: var(--font-family-base);
+    /* استخدام الخط الأساسي للروابط */
+}
+
+.auth-link a,
+.reset-password-button {
+    color: var(--primary-color);
+    /* لون الروابط الأساسي */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color var(--transition-base);
+}
+
+.auth-link a:hover,
+.reset-password-button:hover {
+    color: var(--secondary-color);
+    /* تغيير اللون عند التحويم */
+    text-decoration: underline;
+}
+
+/* 6. رسائل الخطأ والنجاح (تكرار لضمان الأولوية أو لتخصيصات طفيفة) */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا إذا كانت هناك حاجة لتجاوز أنماط معينة
+   أو لضمان تطبيقها في سياق نماذج المصادقة. */
+.error-message,
+.success-message {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 500px) {
+    .auth-form-card {
+        padding: calc(var(--spacing-unit) * 3);
+        /* 24px - تقليل الحشو على الشاشات الصغيرة جدًا */
+    }
+
+    .auth-title {
+        font-size: var(--font-size-h3);
+        /* تقليل حجم العنوان */
+    }
+
+    .auth-button {
+        font-size: 1.1em;
+        /* تقليل حجم خط الزر */
+    }
+}

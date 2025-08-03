@@ -1,0 +1,315 @@
+@import url('./GlobalStyles.css');
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./CommonStyles.css');
+/* استيراد الأنماط المشتركة */
+
+.statistics-page-container {
+    max-width: 900px;
+    /* عرض أقصى للحاوية، مناسب لصفحة الإحصائيات */
+    margin: calc(var(--spacing-unit) * 5) auto;
+    /* 40px - توسيط الحاوية */
+    padding: calc(var(--spacing-unit) * 4.5) calc(var(--spacing-unit) * 3);
+    /* 36px 24px - حشو مناسب */
+    background: var(--surface-light);
+    /* خلفية بيضاء ناصعة */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+    transition: background var(--transition-base), box-shadow var(--transition-base);
+    /* انتقال ناعم للخلفية والظل */
+}
+
+.statistics-page-container:hover {
+    box-shadow: var(--shadow-medium);
+    /* ظل أوضح قليلاً عند التحويم */
+}
+
+.statistics-page-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px - مسافة سفلية */
+    font-size: 2.1em;
+    /* حجم خط كبير ومميز */
+    font-weight: 800;
+    /* خط سميك جداً */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    letter-spacing: 0.5px;
+    /* تباعد الأحرف */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* قسم ملخص الإحصائيات */
+.stats-summary {
+    display: flex;
+    justify-content: space-around;
+    /* توزيع العناصر بالتساوي */
+    flex-wrap: wrap;
+    /* للسماح بالعناصر بالانتقال لسطر جديد */
+    gap: calc(var(--spacing-unit) * 2.25);
+    /* 18px */
+    margin-bottom: calc(var(--spacing-unit) * 4.5);
+    /* 36px */
+    padding: calc(var(--spacing-unit) * 2.25);
+    /* 18px */
+    background: var(--background-light);
+    /* خلفية فاتحة للقسم */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.stats-summary:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.stats-summary p {
+    font-size: 1.1em;
+    color: var(--text-color-dark);
+    margin: 0;
+    text-align: center;
+}
+
+.stats-summary span {
+    display: block;
+    font-size: 1.8em;
+    /* حجم خط كبير للأرقام */
+    font-weight: bold;
+    color: var(--secondary-color);
+    /* لون مميز للأرقام */
+    margin-top: calc(var(--spacing-unit) * 0.5);
+    /* 4px */
+}
+
+/* قسم أفضل الطلاب / الحلقات */
+.top-performers-section {
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+    padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
+    /* 24px 16px */
+    border-radius: var(--border-radius-base);
+    background: var(--background-light);
+    box-shadow: var(--shadow-light);
+    transition: box-shadow var(--transition-base);
+}
+
+.top-performers-section:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.top-performers-section h3 {
+    color: var(--primary-color);
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-family: var(--font-family-arabic);
+}
+
+.top-performers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.top-performers-list li {
+    padding: calc(var(--spacing-unit) * 1.5) 0;
+    /* 12px */
+    border-bottom: 1px solid var(--input-border);
+    color: var(--text-color-dark);
+    font-size: 1em;
+    font-family: var(--font-family-arabic);
+}
+
+.top-performers-list li:last-child {
+    border-bottom: none;
+}
+
+.performer-name {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.performer-halaqa {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.performer-score {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* قسم الرسوم البيانية */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* شبكة مرنة للرسوم البيانية */
+    gap: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    margin-bottom: calc(var(--spacing-unit) * 4);
+    /* 32px */
+}
+
+.chart-card {
+    background-color: var(--background-light);
+    /* خلفية فاتحة للبطاقة */
+    border-radius: var(--border-radius-base);
+    box-shadow: var(--shadow-light);
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px */
+    transition: box-shadow var(--transition-base);
+}
+
+.chart-card:hover {
+    box-shadow: var(--shadow-medium);
+}
+
+.chart-title {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    border-bottom: 1px solid var(--input-border);
+    padding-bottom: calc(var(--spacing-unit) * 0.75);
+    /* 6px */
+    text-align: center;
+    font-family: var(--font-family-arabic);
+}
+
+.chart-wrapper {
+    width: 100%;
+    height: 350px;
+    /* ارتفاع ثابت للرسم البياني */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* الخلفية والظل تأتي من .chart-card */
+}
+
+.chart-wrapper canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* الرسائل العامة */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق الإحصائيات. */
+.loading-message,
+.error-message,
+.unauthorized-message,
+.no-data-message-small,
+/* رسالة لا توجد بيانات صغيرة */
+.no-chart-data {
+    /* رسالة لا توجد بيانات للرسم البياني */
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 15px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.loading-message {
+    background-color: var(--color-info-bg);
+    color: var(--color-info);
+    border: 1px solid var(--color-info-border);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.unauthorized-message {
+    background-color: #FBE9E7;
+    color: #BF360C;
+    border: 1px solid #FFAB91;
+}
+
+.no-data-message-small,
+.no-chart-data {
+    color: var(--color-text-secondary);
+    font-style: italic;
+    background-color: var(--background-light);
+    border: 1px solid var(--input-border);
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    margin-top: calc(var(--spacing-unit) * 2);
+    /* 16px */
+    border-radius: var(--border-radius-base);
+    font-size: 0.9em;
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .statistics-page-container {
+        margin: calc(var(--spacing-unit) * 2) auto;
+        /* 15px */
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .statistics-page-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .stats-summary {
+        flex-direction: column;
+        /* ترتيب الملخص في عمود */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .stats-summary p {
+        font-size: 1em;
+    }
+
+    .stats-summary span {
+        font-size: 1.5em;
+    }
+
+    .charts-grid {
+        grid-template-columns: 1fr;
+        /* عمود واحد للرسوم البيانية */
+        gap: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .chart-wrapper {
+        height: 280px;
+        /* تقليل ارتفاع الرسم البياني */
+    }
+
+    .top-performers-section {
+        padding: calc(var(--spacing-unit) * 2);
+        /* 16px */
+    }
+
+    .top-performers-section h3 {
+        font-size: 1.2em;
+    }
+
+    .top-performers-list li {
+        font-size: 0.95em;
+    }
+}

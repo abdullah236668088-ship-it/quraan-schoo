@@ -1,0 +1,213 @@
+@import url('./GlobalStyles.css');
+/* استيراد الأنماط العامة والمتغيرات */
+@import url('./CommonStyles.css');
+/* استيراد الأنماط المشتركة */
+
+/* src/styles/LoginStyles.css */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    /* توسيط أفقي */
+    align-items: center;
+    /* توسيط عمودي */
+    min-height: calc(100vh - 80px - 60px);
+    /* لضمان وجود مساحة كافية، مع الأخذ في الاعتبار ارتفاع شريط التنقل والتذييل */
+    padding: calc(var(--spacing-unit) * 3);
+    /* 24px - حشو مناسب */
+    background: var(--background-light);
+    /* خلفية فاتحة وهادئة */
+    direction: rtl;
+    /* لضمان صحة الاتجاه */
+    text-align: right;
+    /* لضمان صحة المحاذاة */
+}
+
+.auth-form-card {
+    background: var(--surface-light);
+    /* خلفية بيضاء ناصعة للبطاقة */
+    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 4);
+    /* 40px 32px - حشو سخي */
+    border-radius: var(--border-radius-base);
+    /* زوايا دائرية ناعمة */
+    box-shadow: var(--shadow-light);
+    /* ظل خفيف لإبراز البطاقة */
+    max-width: 420px;
+    /* عرض أقصى للبطاقة */
+    width: 100%;
+    /* تأخذ العرض المتاح */
+    box-sizing: border-box;
+    /* لضمان أن الحشو لا يزيد العرض الكلي */
+    transition: box-shadow var(--transition-base);
+    /* انتقال ناعم للظل عند التحويم */
+}
+
+.auth-form-card:hover {
+    box-shadow: 0 8px 25px rgba(56, 142, 60, 0.10);
+    /* ظل أكثر وضوحًا مع لون أخضر خفيف عند التحويم */
+}
+
+.login-title {
+    text-align: center;
+    /* توسيط العنوان */
+    color: var(--primary-color);
+    /* لون العنوان الأساسي */
+    margin-bottom: calc(var(--spacing-unit) * 3.5);
+    /* 28px - مسافة سفلية */
+    font-size: 2em;
+    /* حجم خط كبير ومميز */
+    font-weight: 800;
+    /* خط سميك جداً */
+    border-bottom: 2px solid var(--secondary-color);
+    /* خط سفلي مميز بلون التمييز */
+    padding-bottom: calc(var(--spacing-unit) * 1.25);
+    /* 10px */
+    letter-spacing: 0.5px;
+    /* تباعد الأحرف */
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي */
+}
+
+/* مجموعات حقول النموذج */
+.form-group {
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px - مسافة سفلية بين مجموعات الحقول */
+    /* التسميات وحقول الإدخال ترث الأنماط من CommonStyles.css و GlobalStyles.css */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: calc(var(--spacing-unit) * 1);
+    /* 8px */
+    font-weight: 600;
+    color: var(--text-color-dark);
+    font-size: 0.95em;
+    font-family: var(--font-family-arabic);
+    /* التأكيد على الخط العربي للتسميات */
+}
+
+
+
+/* زر تسجيل الدخول */
+.login-button {
+    /* يرث من .btn في CommonStyles.css ولكن مع تعديلات */
+    display: block;
+    width: 100%;
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 12px */
+    font-size: 1.2em;
+    margin-top: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    background-color: var(--primary-color);
+    /* أخضر لزر تسجيل الدخول */
+    color: var(--text-color-light);
+    box-shadow: var(--shadow-light);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.login-button:hover {
+    background-color: var(--secondary-color);
+    /* تغيير اللون عند التحويم */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.login-button:disabled {
+    background-color: #cccccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* زر "نسيت كلمة المرور؟" */
+.reset-password-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    color: var(--color-text-secondary);
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+    transition: color var(--transition-base);
+    font-family: var(--font-family-base);
+    /* استخدام الخط الأساسي */
+}
+
+.reset-password-button:hover {
+    color: var(--secondary-color);
+}
+
+.reset-password-button:disabled {
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* رابط "ليس لديك حساب؟" */
+.auth-link {
+    text-align: center;
+    margin-top: calc(var(--spacing-unit) * 3);
+    /* 25px */
+    font-size: 1em;
+    color: var(--text-color-dark);
+    font-family: var(--font-family-base);
+    /* استخدام الخط الأساسي */
+}
+
+.auth-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-base);
+}
+
+.auth-link a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* الرسائل (خطأ، نجاح) */
+/* هذه الفئات موجودة في CommonStyles.css و GlobalStyles.css،
+   ولكن يمكن تكرارها هنا لضمان تطبيقها في سياق تسجيل الدخول. */
+.error-message,
+.success-message {
+    padding: calc(var(--spacing-unit) * 1.5);
+    /* 15px */
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    /* 20px */
+    border-radius: var(--border-radius-base);
+    text-align: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+}
+
+.error-message {
+    background-color: var(--color-error-bg);
+    color: var(--color-error);
+    border: 1px solid var(--color-error-border);
+}
+
+.success-message {
+    background-color: var(--color-success-bg);
+    color: var(--color-success);
+    border: 1px solid var(--color-success-border);
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 500px) {
+    .auth-form-card {
+        padding: calc(var(--spacing-unit) * 3);
+        /* 24px - تقليل الحشو على الشاشات الصغيرة جدًا */
+    }
+
+    .login-title {
+        font-size: 1.8em;
+        /* تقليل حجم العنوان */
+    }
+
+    .login-button {
+        font-size: 1.1em;
+        /* تقليل حجم خط الزر */
+    }
+}

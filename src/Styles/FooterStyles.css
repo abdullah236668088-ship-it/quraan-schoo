@@ -1,0 +1,102 @@
+/* =================================================================
+   Footer Styles - أنماط تذييل الصفحة
+   =================================================================
+   يستخدم هذا الملف المتغيرات من GlobalStyles.css لتوفير تصميم
+   متناسق ونظيف لتذييل الصفحة.
+   ================================================================= */
+
+/* استيراد الأنماط العامة لضمان توفر المتغيرات والأنماط الأساسية */
+@import url('./GlobalStyles.css');
+
+.footer {
+    background-color: var(--surface-light);
+    /* خلفية بيضاء ناصعة للتذييل، متناسقة مع شريط التنقل */
+    color: var(--color-text-secondary);
+    /* لون نص ثانوي هادئ */
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 3);
+    /* 16px 24px - حشو مناسب */
+    margin-top: auto;
+    /* لضمان التصاق التذييل بالأسفل (يعمل مع flexbox في App.css) */
+    border-top: 1px solid var(--input-border);
+    /* خط علوي رفيع وفاصل بلون حدود الإدخال ليتناسق */
+    font-size: 0.9em;
+    /* حجم خط أصغر قليلاً للنص في التذييل */
+    direction: rtl;
+    /* ضمان الاتجاه من اليمين لليسار */
+    text-align: right;
+    /* ضمان محاذاة النص لليمين */
+}
+
+.footer-content {
+    max-width: 1200px;
+    /* عرض أقصى لمحتوى التذييل، متناسق مع شريط التنقل */
+    margin: 0 auto;
+    /* توسيط المحتوى */
+    display: flex;
+    justify-content: space-between;
+    /* توزيع العناصر بالتساوي مع مسافة بينها */
+    align-items: center;
+    /* محاذاة العناصر عموديًا في المنتصف */
+    flex-wrap: wrap;
+    /* للسماح بالانتقال لسطر جديد عند ضيق المساحة (للاستجابة) */
+    gap: calc(var(--spacing-unit) * 2);
+    /* 16px - مسافة بين العناصر */
+}
+
+.footer-content p {
+    margin: 0;
+    /* إزالة الهوامش الافتراضية للفقرات داخل التذييل */
+}
+
+.footer-links {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+    /* 16px - مسافة بين روابط التذييل */
+    list-style: none;
+    /* إزالة نقاط القائمة */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-link {
+    color: var(--color-text-secondary);
+    /* لون الروابط متناسق مع نص التذييل */
+    text-decoration: none;
+    transition: color var(--transition-base);
+    /* انتقال ناعم لتغيير اللون */
+    font-size: 0.9em;
+    /* حجم خط أصغر قليلاً للروابط */
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+    /* تغيير اللون إلى الأساسي عند التحويم */
+    text-decoration: underline;
+    /* إضافة خط سفلي عند التحويم */
+}
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .footer {
+        padding: calc(var(--spacing-unit) * 1.5);
+        /* 12px - تقليل الحشو على الشاشات الصغيرة */
+        font-size: 0.8em;
+        /* تقليل حجم الخط */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        /* ترتيب العناصر في عمود */
+        text-align: center;
+        /* توسيط النص */
+        gap: calc(var(--spacing-unit) * 1.5);
+        /* 12px */
+    }
+
+    .footer-links {
+        flex-direction: column;
+        /* ترتيب الروابط في عمود */
+        gap: calc(var(--spacing-unit) * 1);
+        /* 8px */
+    }
+}
